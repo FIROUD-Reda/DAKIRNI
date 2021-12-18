@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dakirni">
         <activity
-            android:name=".Father"
+            android:name=".SonLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChoiceLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FatherLoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
