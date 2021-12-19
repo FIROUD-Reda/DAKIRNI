@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_homeboard"
+            android:icon="@drawable/menu_dashboard"
+            android:title="@string/menu_homeboard" />
+        <item
+            android:id="@+id/nav_message"
+            android:icon="@drawable/menu_message"
+            android:title="@string/menu_messages" />
+        <item
+            android:id="@+id/nav_reminders"
+            android:icon="@drawable/menu_reminders"
+            android:title="@string/menu_reminders" />
+        <item
+            android:id="@+id/nav_safezone"
+            android:icon="@drawable/menu_map"
+            android:title="@string/menu_safezone" />
+        <item
+            android:id="@+id/nav_qrcode"
+            android:icon="@drawable/menu_qrcode"
+            android:title="@string/menu_qrcode" />
+    </group>
+</menu>

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">DAKIRNI</string>
+    <string name="title_activity_parent_xdash_board">Parent_x_DashBoard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_parents_dash_board">ParentsDashBoard</string>
+
+    <string name="menu_messages">Messages</string>
+    <string name="menu_reminders">Reminders</string>
+    <string name="menu_safezone">Safe Zone</string>
+    <string name="menu_qrcode">QR Code</string>
+    <string name="menu_homeboard">Dash Board</string>
 </resources>
