@@ -10,10 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dakirni">
         <activity
-            android:name=".SonLoginActivity"
-            android:exported="false" />
+            android:name=".ParentsDashBoard"
+            android:exported="false"
+            android:label="@string/title_activity_parents_dash_board"
+            android:theme="@style/Theme.Dakirni.NoActionBar" />
         <activity
-            android:name=".ChoiceLoginActivity"
+            android:name=".SonLoginActivity"
             android:exported="false" />
         <activity
             android:name=".FatherLoginActivity"

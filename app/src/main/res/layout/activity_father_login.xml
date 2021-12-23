@@ -25,7 +25,7 @@
                 android:layout_height="143dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="70dp"
-                android:background="@drawable/logoapp" />
+                android:background="@drawable/blue_logo" />
         </FrameLayout>
 
 
