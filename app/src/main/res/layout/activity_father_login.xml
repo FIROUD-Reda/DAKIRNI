@@ -68,6 +68,7 @@
 
 
         <TextView
+            android:id="@+id/login_father"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -81,7 +82,8 @@
             android:paddingBottom="14dp"
             android:text="Login Father"
             android:textColor="#ffffff"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:clickable="true"/>
 
         <TextView
             android:layout_width="wrap_content"

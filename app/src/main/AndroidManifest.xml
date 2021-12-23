@@ -21,6 +21,14 @@
             android:name=".FatherLoginActivity"
             android:exported="false" />
         <activity
+            android:name=".List_Parent"
+            android:exported="false" />
+
+        <activity
+            android:name=".List_son"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -8,13 +8,21 @@ import android.view.View;
 import android.widget.TextView;
 
 public class SonLoginActivity extends AppCompatActivity {
-    TextView login;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_son_login);
-        login = findViewById(R.id.login);
+        TextView login= findViewById(R.id.login);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SonLoginActivity.this,List_Parent.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
