@@ -9,7 +9,11 @@
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_rounded.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/circle.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/fatherimg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_myapplogo.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_rounded_rectangle.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_rounded_rectangle__2_.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_wave.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/profilebckgrnd.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/side_nav_bar.xml" value="0.15" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/sonimg.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/activity_choice.xml" value="0.2552083333333333" />
@@ -28,6 +32,7 @@
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/content_parents_dash_board.xml" value="0.13385416666666666" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_gallery.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_home.xml" value="0.259375" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_home_board.xml" value="0.264" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_message.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_qr_code.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_safeZone.xml" value="0.259375" />
