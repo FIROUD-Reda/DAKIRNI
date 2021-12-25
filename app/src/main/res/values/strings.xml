@@ -18,4 +18,21 @@
     <string name="age">Age</string>
     <string name="relation">Relation</string>
 
+
+    <string name="subject">Subject</string>
+    <string name="uploadImage">Upload Image</string>
+    <string name="add">Add</string>
+    <string name="text">Text</string>
+    <string name="message">Message</string>
+    <string name="key">Key</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="newPassword">New Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="save">Save</string>
+    <string name="password">Password</string>
+    <string name="forgotPassword">Forgot Password ?</string>
+    <string name="generate">Generate</string>
+    <string name="emailVerification">Email Verification</string>
+
 </resources>

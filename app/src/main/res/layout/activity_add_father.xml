@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="273dp"
+        android:background="@drawable/ic_wave"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="190dp"
+            android:text="@string/uploadImage"/>
+        <ImageView
+            android:id="@+id/image_upload"
+            android:layout_width="158dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/uploading" />
+    </FrameLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginRight="62dp"
+        android:background="@drawable/blue_fill__rounded_color"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+
+        android:text="@string/add"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="338dp"
+
+        android:background="@drawable/blue_fill__rounded_color"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+
+        android:text="@string/generate"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="300dp"
+        android:text="@string/nom"/>
+
+    <EditText
+
+        android:id="@+id/pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="@string/emailVerification"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:paddingLeft="170dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="350dp"
+        android:text="@string/key"/>
+
+    <EditText
+
+        android:id="@+id/pass1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="338dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="@string/key"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:paddingLeft="170dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:textCursorDrawable="@drawable/cursor_color"
+        android:textSize="12sp" />
+</RelativeLayout>
