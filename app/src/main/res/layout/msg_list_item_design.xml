@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/msgLabel"
+            android:layout_width="267dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="MSG Label"
+            android:textColor="#000000"
+            android:textSize="25sp"></TextView>
+
+        <TextView
+            android:id="@+id/msgContent"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_centerInParent="true"
+            android:text="MessageContent"
+            android:textColor="#CDC7C7">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/msgDate"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/msgContent"
+            android:layout_alignParentEnd="true"
+            android:gravity="bottom"
+            android:text="Date Of Sending"
+            android:textSize="13dp">
+
+        </TextView>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_below="@id/msgDate"
+            android:background="?android:attr/listDivider"
+            android:backgroundTint="#050505"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

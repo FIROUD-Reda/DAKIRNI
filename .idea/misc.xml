@@ -13,6 +13,7 @@
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_rounded_rectangle.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_rounded_rectangle__2_.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/ic_wave.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/msgslist.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/profilebckgrnd.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/side_nav_bar.xml" value="0.15" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/sonimg.xml" value="0.2755208333333333" />
@@ -40,6 +41,9 @@
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/fragment_slideshow.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/home_board_fragment.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/interface_father.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/item_design.xml" value="0.18115942028985507" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/msg_list_item_design.xml" value="0.259375" />
+        <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/msgs_list.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/nav_header_parent_xdash_board.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/layout/nav_header_parents_dash_board.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/menu/activity_main_drawer.xml" value="0.259375" />
