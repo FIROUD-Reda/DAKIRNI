@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dakirni">
         <activity
+            android:name=".LogoIntro"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ChangePassword"
             android:exported="false" />
         <activity

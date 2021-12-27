@@ -24,5 +24,9 @@
             android:id="@+id/nav_qrcode"
             android:icon="@drawable/menu_qrcode"
             android:title="@string/menu_qrcode" />
+        <item
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/contacts"
+            android:title="@string/menu_contacts" />
     </group>
 </menu>
