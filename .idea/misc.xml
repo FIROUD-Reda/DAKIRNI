@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/fragment_message.xml" value="0.1" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/fragment_qr_code.xml" value="0.22" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/qrcode.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_border_rounded_cornwe.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_circle.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_fill__rounded_color.xml" value="0.2755208333333333" />

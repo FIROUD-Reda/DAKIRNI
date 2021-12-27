@@ -19,12 +19,11 @@ public class List_Parent extends AppCompatActivity {
     List<ModelClassforson> fatherList;
     AdapterSon adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.interface_father);
-        //initData();
-
         initDataforson();
         initRecyclerView();
     }

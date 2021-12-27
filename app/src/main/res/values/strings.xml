@@ -17,5 +17,10 @@
     <string name="nom">Name</string>
     <string name="age">Age</string>
     <string name="relation">Relation</string>
+    <!--QR CODE -->
+    <string name="codeQR">QR code</string>
+    <string name="entre_key_for_QR">Enter your info</string>
+    <string name="generate_code">Generate QR Code</string>
+    <string name="imprimer_code">Imprimer QR Code</string>
 
 </resources>
