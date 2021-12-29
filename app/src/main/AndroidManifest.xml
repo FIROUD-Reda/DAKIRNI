@@ -67,6 +67,9 @@
         <activity
             android:name=".List_son"
             android:exported="false" />
+        <activity
+            android:name=".List_msgs"
+            android:exported="false" />
 
         <activity
             android:name=".MainActivity"
