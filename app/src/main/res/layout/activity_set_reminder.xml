@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/linearLayout_set_reminder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView_reminder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_set_reminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/btn_cancel_reminder"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:paddingLeft="37dp"
+                android:paddingTop="15dp"
+                android:paddingRight="37dp"
+                android:paddingBottom="15dp"
+                android:text="@string/reminder"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_cancel_reminder"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/blue_fill__rounded_color"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/poppins_medium"
+                android:maxHeight="48dp"
+                android:text="@string/cancel"
+                android:textColor="#ffffff"
+                android:textSize="9sp"
+                tools:layout_editor_absoluteX="133dp" />
+
+            <Button
+                android:id="@+id/btn_confirm_reminder"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_set_reminder"
+                android:background="@drawable/blue_fill__rounded_color"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/poppins_medium"
+                android:maxHeight="48dp"
+                android:text="@string/confirm"
+                android:textColor="#ffffff"
+                android:textSize="9sp"
+                tools:layout_editor_absoluteX="133dp" />
+        </RelativeLayout>
+
+
+        <ScrollView
+            android:id="@+id/scrollView_reminder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_set_reminder">
+
+            <include
+                layout="@layout/activity_set_reminder_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
