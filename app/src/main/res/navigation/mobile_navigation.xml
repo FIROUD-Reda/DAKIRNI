@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_homeboard">
+    <fragment
+        android:id="@+id/nav_homeboard"
+        android:name="com.example.dakirni.ui.homeboard.HomeBoardFragment"
+        android:label="@string/menu_homeboard"
+        tools:layout="@layout/fragment_home_board" />
+
+    <fragment
+        android:id="@+id/nav_qrcode"
+        android:name="com.example.dakirni.ui.qrcode.QrCodeFragment"
+        android:label="@string/menu_qrcode"
+        tools:layout="@layout/fragment_qr_code" />
+    <fragment
+        android:id="@+id/nav_message"
+        android:name="com.example.dakirni.ui.message.MessageFragment"
+        android:label="@string/menu_messages"
+        tools:layout="@layout/fragment_message" />
+
+    <fragment
+        android:id="@+id/nav_reminders"
+        android:name="com.example.dakirni.ui.reminders.RemindersFragment"
+        android:label="@string/menu_reminders"
+        tools:layout="@layout/fragment_reminders" />
+
+    <fragment
+        android:id="@+id/nav_safezone"
+        android:name="com.example.dakirni.ui.safezone.SafezoneFragment"
+        android:label="@string/menu_safezone"
+        tools:layout="@layout/fragment_safezone" />
+</navigation>

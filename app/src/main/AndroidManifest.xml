@@ -50,8 +50,24 @@
             android:name=".SignUp"
             android:exported="true" />
         <activity
-            android:name=".Father"
+            android:name=".ParentsDashBoard"
+            android:exported="false"
+            android:label="@string/title_activity_parents_dash_board"
+            android:theme="@style/Theme.Dakirni.NoActionBar" />
+        <activity
+            android:name=".SonLoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".FatherLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".List_Parent"
+            android:exported="false" />
+
+        <activity
+            android:name=".List_son"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true" >

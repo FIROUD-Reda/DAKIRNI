@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/imageview1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="60dp">
+
+            <ImageView
+                android:id="@+id/image_father"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher_round"></ImageView>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/name_father"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/imageview1"
+            android:text="usman lamkadam"
+            android:textColor="#000000"
+            android:textSize="25sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Key"
+            android:layout_width="186dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_father"
+            android:layout_marginLeft="131dp"
+            android:layout_marginTop="-30dp"
+            android:layout_toRightOf="@id/imageview1"
+            android:text="How are you"
+            android:textSize="20sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/imageview1"
+            android:layout_toRightOf="@id/imageview1"
+            android:text="hello"
+            android:textColor="#CDC7C7">
+
+        </TextView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
