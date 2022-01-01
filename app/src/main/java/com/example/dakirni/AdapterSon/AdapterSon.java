@@ -42,12 +42,12 @@ public class AdapterSon extends RecyclerView.Adapter<AdapterSon.ItemViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
 
-        int resource = fatherList.get(position).getImageview();
+//        int resource = fatherList.get(position).getImageview();
         String name=fatherList.get(position).getTextview1();
         String msg=fatherList.get(position).getTextview2();
         String line=fatherList.get(position).getDivider();
 
-        holder.setData(resource,name,msg,line);
+        holder.setData(name,msg,line);
 
 
 
@@ -93,14 +93,12 @@ public class AdapterSon extends RecyclerView.Adapter<AdapterSon.ItemViewHolder> 
 
         }
 
-        public void setData(int resource, String name, String msg,String line) {
+        public void setData( String name, String msg,String line) {
 
-           imageView.setImageResource(resource);
+//           imageView.setImageResource(resource);
             textView.setText(name);
            textView2.setText(msg);
             divider.setText(line);
-
-
 
         }
     }
