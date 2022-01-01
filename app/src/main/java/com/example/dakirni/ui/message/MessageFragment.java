@@ -1,21 +1,15 @@
 package com.example.dakirni.ui.message;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dakirni.List_msgs;
 import com.example.dakirni.R;
 import com.example.dakirni.databinding.FragmentMessageBinding;
 import com.example.dakirni.msgsAdapter.Message;
@@ -61,7 +55,7 @@ public class MessageFragment extends Fragment {
 
     private void initDataforson() {
         msgsList = new ArrayList<>();
-        msgsList.add(new Message("Titre1","Content1sdkjskfs", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
+        msgsList.add(new Message("Titre1","Col", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
         msgsList.add(new Message("Titre2","Content1sdkjskfsdkfsslkjvskdfhsdkjfnsdkjfnsdlfk,sdflkn,sv,xc;vns,fdvsklfdjnsdkjgnkjdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
         msgsList.add(new Message("Titre3","Content1sdkjskfsdkfsdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
         msgsList.add(new Message("Titre4","Content1sdkjskfsdkfsdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
