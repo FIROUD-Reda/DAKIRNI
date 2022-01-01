@@ -98,7 +98,7 @@ String global_KEY="auth father";
                     PrintHelper photoPrinter = new PrintHelper(getActivity());
                     photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
 
-                    photoPrinter.printBitmap("droids.jpg - test print", bitmap);
+                    photoPrinter.printBitmap("photoQRCode.jpg", bitmap);
                 }
 
         });
@@ -127,7 +127,7 @@ String global_KEY="auth father";
             bitmap = qrgEncoder.encodeAsBitmap();
             qrImage.setImageBitmap(bitmap);
         } catch (WriterException e) {
-            Log.e("Tag", e.toString());
+            Log.e("TagErr", e.toString());
         }
     }
     }
