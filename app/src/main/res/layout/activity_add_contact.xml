@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/linearLayout_add_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_add_contact_infos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <TextView
+          android:id="@+id/tv_add_contact"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_toRightOf="@+id/btn_cancel_add_contact"
+          android:background="@android:color/transparent"
+          android:fontFamily="@font/poppins_regular"
+          android:gravity="center_horizontal"
+          android:maxLines="1"
+          android:paddingLeft="25dp"
+          android:paddingTop="15dp"
+          android:paddingRight="25dp"
+          android:paddingBottom="15dp"
+          android:text="@string/add_contact"
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+          android:textCursorDrawable="@drawable/cursor_color"
+          android:textSize="20sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <Button
+          android:id="@+id/btn_cancel_add_contact"
+          android:layout_width="80dp"
+          android:layout_height="48dp"
+          android:layout_centerVertical="true"
+          android:background="@drawable/blue_fill__rounded_color"
+          android:backgroundTint="@color/blue"
+          android:fontFamily="@font/poppins_medium"
+          android:maxHeight="48dp"
+          android:text="@string/cancel"
+          android:textColor="#ffffff"
+          android:textSize="9sp"
+          tools:layout_editor_absoluteX="133dp" />
+
+      <Button
+          android:id="@+id/btn_confirm_add_contact"
+          android:layout_width="80dp"
+          android:layout_height="48dp"
+          android:layout_centerVertical="true"
+          android:layout_toRightOf="@+id/tv_add_contact"
+          android:background="@drawable/blue_fill__rounded_color"
+          android:backgroundTint="@color/blue"
+          android:fontFamily="@font/poppins_medium"
+          android:maxHeight="48dp"
+          android:text="@string/confirm"
+          android:textColor="#ffffff"
+          android:textSize="9sp"
+          tools:layout_editor_absoluteX="133dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_add_contact_infos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_add_contact">
+
+      <RelativeLayout
+          android:id="@+id/relativeLayout_contact_name"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="35dp"
+          android:layout_marginBottom="15dp"
+          android:background="@drawable/blue_border_rounded_cornwe"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/input_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/contact_name"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            tools:ignore="TextContrastCheck" />
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/relativeLayout_contact_number"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="15dp"
+          android:layout_marginBottom="15dp"
+          android:background="@drawable/blue_border_rounded_cornwe"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/input_contact_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/contact_number"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            tools:ignore="TextContrastCheck" />
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/relativeLayout_add_contact_image"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="15dp"
+          android:layout_marginBottom="15dp"
+          android:background="@drawable/blue_border_rounded_cornwe"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/relativeLayout_reminder_text">
+
+        <TextView
+            android:id="@+id/tv_add_contact_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_add_contact_image"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="1"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/no_image"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <Button
+            android:id="@+id/btn_add_contact_image"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/blue_fill__rounded_color"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins_medium"
+            android:maxHeight="50dp"
+            android:text="@string/add_image"
+            android:textColor="#ffffff"
+            android:textSize="9sp"
+            tools:layout_editor_absoluteX="133dp" />
+      </RelativeLayout>
+
+      <ImageView
+          android:id="@+id/imageView_add_contact"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="25dp"
+          android:layout_marginBottom="15dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:srcCompat="@drawable/ic_person_100" />
+
+    </LinearLayout>
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
