@@ -2,16 +2,15 @@ package com.example.dakirni.msgsAdapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dakirni.MsgActivity;
 import com.example.dakirni.R;
 
 import java.util.Date;
@@ -39,11 +38,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     public void onBindViewHolder(@NonNull MessagesAdapter.ViewHolder holder, int position) {
 
         String msgLabel = messageList.get(position).getMsgLabel();
-        String msgContent=messageList.get(position).getTextContent();
+        String textContent=messageList.get(position).getTextContent();
         String[] msgImages=messageList.get(position).getImagesArray();
         String[] msgVoices=messageList.get(position).getVoicesArray();
         Date msgCreationDate=messageList.get(position).getCreationDate();
-        holder.setData(msgLabel,msgContent,msgImages,msgVoices,msgCreationDate);
+        holder.setData(msgLabel,textContent,msgImages,msgVoices,msgCreationDate);
 
 
 
@@ -72,7 +71,26 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             msgContextView=itemView.findViewById(R.id.msgContent);
             msgCreationDateView=itemView.findViewById(R.id.msgDate);
 
-
+itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+//        builder.setTitle(msgLabelView.getText().toString());
+//        builder.setMessage(msgContextView.getText().toString());
+//        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                dialogInterface.dismiss();
+//            }
+//        });
+//        builder.show();
+        Intent intent=new Intent(mContext, MsgActivity.class);
+        intent.putExtra("Label",msgLabelView.getText().toString());
+        intent.putExtra("Context",msgContextView.getText().toString());
+        intent.putExtra("Date",msgCreationDateView.getText().toString());
+        mContext.startActivity(intent);
+    }
+});
 
         }
 
@@ -81,11 +99,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             msgLabelView.setText(msgLabel);
             msgContextView.setText(msgContent);
             String baseDate=msgCreationDate.toLocaleString();
-            String date=baseDate.substring(0,6)+" "+baseDate.substring(13,17)+" "+baseDate.substring(21,23);
+            String date=baseDate.toString();
             msgCreationDateView.setText(date);
 
 
 
         }
+
     }
 }
