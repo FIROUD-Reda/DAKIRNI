@@ -1,4 +1,4 @@
-package com.example.dakirni;
+package com.example.dakirni.ui.safezone;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.dakirni.R;
 
 public class BaseLocationDialog extends AppCompatDialogFragment {
 

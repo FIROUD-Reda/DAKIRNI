@@ -7,6 +7,8 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -30,22 +32,22 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+<!--        <activity-->
+<!--            android:name=".ui.safezone.SafeZoneActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/title_activity_safe_zone" />-->
+<!--        <activity-->
+<!--            android:name=".ui.safezone.BaseLocationDialog"-->
+<!--            android:exported="true" />-->
         <activity
-            android:name=".SafeZoneActivity"
-            android:exported="true"
-            android:label="@string/title_activity_safe_zone" />
-        <activity
-            android:name=".BaseLocationDialog"
+            android:name=".ui.safezone.BaseLocationActivity"
             android:exported="true" />
         <activity
-            android:name=".BaseLocationActivity"
+            android:name=".ui.reminders.SetReminderActivity"
             android:exported="true" />
-        <activity
-            android:name=".SetReminderActivity"
-            android:exported="true" />
-        <activity
-            android:name=".RemindersActivity"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".RemindersActivity"-->
+<!--            android:exported="true" />-->
         <activity
             android:name=".SignUp"
             android:exported="true" />

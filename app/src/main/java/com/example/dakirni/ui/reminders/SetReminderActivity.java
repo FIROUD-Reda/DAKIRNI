@@ -1,4 +1,4 @@
-package com.example.dakirni;
+package com.example.dakirni.ui.reminders;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,14 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.AlarmClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.example.dakirni.AdapterReminder.Reminder;
+import com.example.dakirni.R;
 
 public class SetReminderActivity extends AppCompatActivity {
 
@@ -64,7 +65,7 @@ public class SetReminderActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SetReminderActivity.this, RemindersActivity.class);
+                Intent intent = new Intent(SetReminderActivity.this, RemindersFragment.class);
                 startActivity(intent);
             }
         });
