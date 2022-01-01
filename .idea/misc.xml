@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_border_rounded_cornwe.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_circle.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_fill__rounded_color.xml" value="0.2755208333333333" />
@@ -47,13 +46,6 @@
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/menu/parent_x__dash_board.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/menu/parents_dash_board.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2755208333333333" />
-        <entry key="app/src/main/res/drawable/ic_wave.xml" value="0.371875" />
-        <entry key="app/src/main/res/layout/activity_father_login.xml" value="0.2056159420289855" />
-        <entry key="app/src/main/res/layout/activity_msg.xml" value="0.27309782608695654" />
-        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.27309782608695654" />
-        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/fragment_msg.xml" value="0.27309782608695654" />
-        <entry key="app/src/main/res/layout/msgs_list.xml" value="0.27309782608695654" />
       </map>
     </option>
   </component>
