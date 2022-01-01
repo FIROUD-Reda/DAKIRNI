@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:background="@drawable/ic_wave">
+
+            <FrameLayout
+                android:layout_width="168dp"
+                android:layout_height="143dp"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/blue_logo" />
+        </FrameLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+
+                android:layout_marginTop="10dp"
+                android:text="@string/subject"
+                android:textColor="@color/teal_700"
+                android:textSize="20dp" />
+
+            <!-- INPUT -->
+            <EditText
+                android:id="@+id/username_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
+                android:layout_marginRight="62dp"
+                android:background="@drawable/blue_border_rounded_cornwe"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="@string/subject"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textAlignment="center"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:textSize="12sp" />
+
+            <!-- ICON -->
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+
+                android:layout_marginTop="10dp"
+                android:text="@string/text"
+                android:textColor="@color/teal_700"
+                android:textSize="20dp" />
+
+            <!-- INPUT -->
+            <EditText
+                android:id="@+id/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/blue_border_rounded_cornwe"
+                android:hint="@string/message"
+                android:inputType="text|textMultiLine"
+                android:textAlignment="center"
+                android:textCursorDrawable="@drawable/cursor_color"
+                tools:ignore="MissingConstraints" />
+
+            <!-- ICON -->
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="80dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:id="@+id/upload_image"
+                android:text="@string/uploadImage"
+                android:textColor="#1566e0"
+                android:layout_marginRight="30dp"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/upload1"
+                android:layout_width="90dp"
+
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/voice"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="30dp"
+
+                app:srcCompat="@drawable/ic_voice_record"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/stop"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="30dp"
+                app:srcCompat="@drawable/ic_voice_stop" />
+
+            <ImageButton
+                android:id="@+id/play"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/ic_voice_play" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="62dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="62dp"
+            android:background="@drawable/blue_fill__rounded_color"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:text="@string/add"
+            android:textColor="#ffffff"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
