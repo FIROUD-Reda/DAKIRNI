@@ -52,7 +52,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="338dp"
-
+        android:id="@+id/generateButton"
         android:background="@drawable/blue_fill__rounded_color"
         android:fontFamily="@font/poppins_medium"
         android:gravity="center"
@@ -98,7 +98,7 @@
 
     <EditText
 
-        android:id="@+id/pass1"
+        android:id="@+id/myKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="338dp"
