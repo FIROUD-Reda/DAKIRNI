@@ -1,4 +1,4 @@
-package com.example.dakirni;
+package com.example.dakirni.ui.safezone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import com.example.dakirni.R;
+import com.example.dakirni.ui.safezone.BaseLocationDialog;
 
 public class BaseLocationActivity extends AppCompatActivity implements BaseLocationDialog.BaseLocationDialogListener {
 
