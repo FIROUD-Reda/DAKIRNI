@@ -36,12 +36,8 @@
 <!--            android:name=".ui.safezone.SafeZoneActivity"-->
 <!--            android:exported="true"-->
 <!--            android:label="@string/title_activity_safe_zone" />-->
-<!--        <activity-->
-<!--            android:name=".ui.safezone.BaseLocationDialog"-->
-<!--            android:exported="true" />-->
-        <activity
-            android:name=".ui.safezone.BaseLocationActivity"
-            android:exported="true" />
+<!--        -->
+<!--          -->
         <activity
             android:name=".ui.reminders.SetReminderActivity"
             android:exported="true" />
