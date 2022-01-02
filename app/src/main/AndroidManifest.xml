@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -70,22 +71,29 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+<!--        <activity-->
+<!--            android:name=".SafeZoneActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/title_activity_safe_zone" />-->
+<!--        -->
+<!--        <activity-->
+<!--            android:name=".BaseLocationDialog"-->
+<!--            android:exported="true"-->
+<!--            tools:ignore="Instantiatable" />-->
+<!--        <activity-->
+<!--            android:name=".BaseLocationActivity"-->
+<!--            android:exported="true" />-->
+<!--        <activity-->
+<!--            android:name=".SetReminderActivity"-->
+<!--            android:exported="true" />-->
+<!--        <activity-->
+<!--            android:name=".RemindersActivity"-->
+<!--            android:exported="true" />-->
+<!--        <activity-->
+<!--            android:name=".ui.safezone.BaseLocationActivity"-->
+<!--            android:exported="true" />-->
         <activity
-            android:name=".SafeZoneActivity"
-            android:exported="true"
-            android:label="@string/title_activity_safe_zone" />
-        <activity
-            android:name=".BaseLocationDialog"
-            android:exported="true"
-            tools:ignore="Instantiatable" />
-        <activity
-            android:name=".BaseLocationActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SetReminderActivity"
-            android:exported="true" />
-        <activity
-            android:name=".RemindersActivity"
+            android:name=".ui.reminders.SetReminderActivity"
             android:exported="true" />
         <activity
             android:name=".SignUp"
