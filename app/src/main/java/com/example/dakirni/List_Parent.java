@@ -19,12 +19,11 @@ public class List_Parent extends AppCompatActivity {
     List<ModelClassforson> fatherList;
     AdapterSon adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.interface_father);
-        //initData();
-
         initDataforson();
         initRecyclerView();
     }
@@ -44,7 +43,6 @@ public class List_Parent extends AppCompatActivity {
     private void initDataforson() {
         fatherList = new ArrayList<>();
 
-        fatherList.add(new ModelClassforson(R.drawable.bo, "Nabuihohvizuhviushgheil", "kEY:" + "eyJhbGciOiJIUzUxMiJ9", "_______________________________________"));
         fatherList.add(new ModelClassforson(R.drawable.bo, "Nabil", "kEY:" + "eyJhbGciOiJIUzUxMiJ9", "_______________________________________"));
         fatherList.add(new ModelClassforson(R.drawable.bo, "Nabil", "kEY:" + "eyJhbGciOiJIUzUxMiJ9", "_______________________________________"));
         fatherList.add(new ModelClassforson(R.drawable.bo, "Nabil", "kEY:" + "eyJhbGciOiJIUzUxMiJ9", "_______________________________________"));

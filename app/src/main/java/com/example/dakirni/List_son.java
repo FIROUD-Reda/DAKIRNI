@@ -22,6 +22,7 @@ public class List_son extends AppCompatActivity {
     LinearLayoutManager layoutManager;
     List<ModelClass> sonList;
     MyAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
