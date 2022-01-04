@@ -37,20 +37,20 @@
                 android:layout_marginLeft="30dp"
 
                 android:layout_marginTop="10dp"
-                android:text="@string/subject"
+                android:text="@string/msg_title"
                 android:textColor="@color/teal_700"
                 android:textSize="20dp" />
 
             <!-- INPUT -->
             <EditText
-                android:id="@+id/username_input"
+                android:id="@+id/message_title_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="130dp"
                 android:layout_marginRight="62dp"
                 android:background="@drawable/blue_border_rounded_cornwe"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="@string/subject"
+                android:hint="@string/msg_title_content"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="17dp"
@@ -83,16 +83,17 @@
 
             <!-- INPUT -->
             <EditText
-                android:id="@+id/edit_text"
+                android:id="@+id/message_content_input"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="35dp"
                 android:layout_marginRight="50dp"
                 android:background="@drawable/blue_border_rounded_cornwe"
+                android:gravity="start"
                 android:hint="@string/message"
                 android:inputType="text|textMultiLine"
-                android:textAlignment="center"
+                android:padding="3dp"
                 android:textCursorDrawable="@drawable/cursor_color"
                 tools:ignore="MissingConstraints" />
 
@@ -121,44 +122,80 @@
                 android:textSize="15sp" />
 
             <ImageView
-                android:id="@+id/upload1"
+                android:id="@+id/uploaded_image"
                 android:layout_width="90dp"
-
                 android:layout_height="50dp"
+                android:src="@drawable/upload_img"
                 android:layout_gravity="center"
                 />
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/voice"
                 android:layout_width="90dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="30dp"
 
-                app:srcCompat="@drawable/ic_voice_record"
+                app:srcCompat="@drawable/start_recording"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <ImageButton
+<!--            <ImageView-->
+<!--                android:id="@+id/stop"-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="80dp"-->
+<!--                android:layout_marginRight="30dp"-->
+<!--                app:srcCompat="@drawable/stop_recording"-->
+<!--                android:visibility="invisible"/>-->
+            <ImageView
                 android:id="@+id/stop"
                 android:layout_width="90dp"
                 android:layout_height="80dp"
+                android:layout_marginLeft="140dp"
                 android:layout_marginRight="30dp"
-                app:srcCompat="@drawable/ic_voice_stop" />
+                app:srcCompat="@drawable/stop_recording"
+                android:visibility="invisible"/>
 
-            <ImageButton
+            <ImageView
+                android:id="@+id/deleteRecord"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="140dp"
+                android:layout_marginRight="30dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/delete_record" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/play"-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="80dp"-->
+<!--                app:srcCompat="@drawable/play_recording"-->
+<!--                android:visibility="invisible"/>-->
+            <ImageView
                 android:id="@+id/play"
                 android:layout_width="90dp"
                 android:layout_height="80dp"
-                app:srcCompat="@drawable/ic_voice_play" />
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="30dp"
+                app:srcCompat="@drawable/play_recording"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/playdecoded"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginRight="30dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/fatherimg" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/send"
@@ -173,7 +210,7 @@
             android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:text="@string/add"
+            android:text="@string/send"
             android:textColor="#ffffff"
             android:textSize="12sp" />
 
