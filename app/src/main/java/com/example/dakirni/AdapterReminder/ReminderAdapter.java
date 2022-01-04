@@ -1,4 +1,4 @@
-package com.example.dakirni;
+package com.example.dakirni.AdapterReminder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.dakirni.R;
+import com.example.dakirni.ui.reminders.SetReminderActivity;
 
 import java.util.List;
 

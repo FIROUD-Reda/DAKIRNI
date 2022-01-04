@@ -1,15 +1,18 @@
 package com.example.dakirni.ui.message;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dakirni.AddMessage;
 import com.example.dakirni.R;
 import com.example.dakirni.databinding.FragmentMessageBinding;
 import com.example.dakirni.msgsAdapter.Message;
@@ -32,7 +35,16 @@ public class MessageFragment extends Fragment {
         View root = binding.getRoot();
         initDataforson();
         initRecyclerView(root);
+        View newMsgBtn= root.findViewById(R.id.floatingActionButton);
+newMsgBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(root.getContext(), AddMessage.class);
+        startActivity(intent);
+    }
+});
         return root;
+
     }
 
     @Override
