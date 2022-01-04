@@ -42,7 +42,7 @@
                 android:layout_toRightOf="@+id/username_icon"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingLeft="17dp"
@@ -79,7 +79,7 @@
                 android:layout_toRightOf="@+id/icon"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLength="10"
                 android:maxLines="1"
@@ -113,18 +113,19 @@
             android:gravity="center"
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
-            android:text="Login"
+            android:text="@string/login"
             android:id="@+id/login"
             android:textColor="#ffffff"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="FORGOT PASSWORD ?"
+            android:text="@string/forgotPassword"
             android:textColor="#1566e0"
             android:textSize="10.5sp" />
 

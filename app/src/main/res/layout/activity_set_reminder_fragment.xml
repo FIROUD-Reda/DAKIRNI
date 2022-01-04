@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_set_reminder_fragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TimePicker
+        android:id="@+id/timePicker_reminder_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="0.6"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout_set_reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_set_reminder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/blue_border_rounded_cornwe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timePicker_reminder_time">
+
+        <EditText
+            android:id="@+id/input_reminder_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/reminder_title"
+            android:maxLines="1"
+            android:minHeight="48dp"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textCursorDrawable="@drawable/cursor_color"
+            tools:ignore="TextContrastCheck" />
+
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox_repeat"
+        style="@style/CustomCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="25dp"
+        android:checked="false"
+        android:text="@string/repeat_reminder"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout_repeat_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout_set_reminder" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_repeat_options"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBox_repeat">
+
+        <CheckBox
+            android:id="@+id/checkBox_Mon"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="@string/mon" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Tue"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:checked="false"
+            android:text="@string/tue" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Wed"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="@string/wed" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Thu"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="@string/thu" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Fri"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="@string/fri" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Sat"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="@string/sat" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Sun"
+            style="@style/CustomCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:text="@string/sun" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_reminder_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/blue_border_rounded_cornwe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_repeat_options">
+
+        <EditText
+
+            android:id="@+id/input_reminder_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="false"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:hint="@string/reminder_text"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:maxLines="5"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_reminder_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/blue_border_rounded_cornwe"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout_reminder_text">
+
+        <TextView
+            android:id="@+id/tv_reminder_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_add_reminder_image"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="1"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/no_image"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <Button
+            android:id="@+id/btn_add_reminder_image"
+            tools:layout_editor_absoluteX="133dp"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/blue_fill__rounded_color"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins_medium"
+            android:maxHeight="50dp"
+            android:text="@string/add_image"
+            android:textColor="#ffffff"
+            android:textSize="9sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout_reminder_voice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/blue_border_rounded_cornwe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout_reminder_image">
+
+        <TextView
+            android:id="@+id/tv_reminder_voice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_add_reminder_voice"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="1"
+            android:paddingLeft="17dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/no_voice"
+            android:textCursorDrawable="@drawable/cursor_color" />
+
+        <Button
+            android:id="@+id/btn_add_reminder_voice"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/blue_fill__rounded_color"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/poppins_medium"
+            android:maxHeight="48dp"
+            android:text="@string/add_voice"
+            android:textColor="#ffffff"
+            android:textSize="9sp"
+            tools:layout_editor_absoluteX="133dp" />
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
