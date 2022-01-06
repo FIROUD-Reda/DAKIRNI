@@ -8,7 +8,8 @@ import java.util.Calendar;
 import java.util.UUID;
 
 public class Reminder {
-
+    private String Reminder_content ;
+    private String Reminder_title;
     private String reminder_id = UUID.randomUUID().toString();;
     private int hour, minute;
     private boolean is_active, is_repeating;
@@ -18,7 +19,7 @@ public class Reminder {
     private String image;
     private String voice;
 
-    public String getReminder_id() {
+/**/    public String getReminder_id() {
         return reminder_id;
     }
 
@@ -61,7 +62,6 @@ public class Reminder {
     public boolean isIs_active() {
         return is_active;
     }
-
     public void setis_active(boolean is_active) {
         this.is_active = is_active;
     }

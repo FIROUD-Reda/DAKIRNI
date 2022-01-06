@@ -1,29 +1,29 @@
 package com.example.dakirni.msgsAdapter;
 
-import com.google.gson.annotations.SerializedName;
+//import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
 public class Message {
 
 
-    @SerializedName("msgId")
+  //  @SerializedName("msgId")
     private  Double msgId;
-    @SerializedName("msgLabel")
+   // @SerializedName("msgLabel")
     private String msgLabel;
-    @SerializedName("msgContent")
+    //@SerializedName("msgContent")
     private String textContent;
-    @SerializedName("creationDate")
+   // @SerializedName("creationDate")
     private Date creationDate;
-    @SerializedName("msgVoice")
+   // @SerializedName("msgVoice")
     private String[] voicesArray;
-    @SerializedName("msgImages")
+   // @SerializedName("msgImages")
     private String[] imagesArray;
-    @SerializedName("is_sent")
+   // @SerializedName("is_sent")
     private boolean is_sent;
-    @SerializedName("is_delivered")
+   // @SerializedName("is_delivered")
     private boolean is_delivered;
-    @SerializedName("is_read")
+   // @SerializedName("is_read")
     private boolean is_read;
 
     public Message() {

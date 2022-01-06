@@ -32,12 +32,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import retrofit2.Retrofit;
+//import retrofit2.Retrofit;
 
 public class AddMessage extends AppCompatActivity {
     //Variables message voice
     ImageView play, record, stop, delete;
-    private Retrofit retrofit;
+    //private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private String BASE_URL = "";
     //    ImageButton play, record, stop;
