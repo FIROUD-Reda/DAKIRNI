@@ -35,24 +35,46 @@
             android:text="Msg Content : "
             android:textSize="22sp" />
 
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            app:iss_auto_cycle="true"
-            app:iss_period="1000"
-            app:iss_delay="0"/>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/label44"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Msg Label : "
+            android:text="Msg Audio : "
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/playaudio"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="30dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/play_recording" />
+
+            <ImageView
+                android:id="@+id/stopaudio"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+
+                android:layout_marginRight="30dp"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/stop_recording" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

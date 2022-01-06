@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dakirni.msgsAdapter.Message;
+import com.example.dakirni.ui.message.MessageFragment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,15 +32,21 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
-//import retrofit2.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddMessage extends AppCompatActivity {
     //Variables message voice
     ImageView play, record, stop, delete;
-    //private Retrofit retrofit;
+    private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "";
+    //    private String BASE_URL = "http://10.0.2.2:3000";
+    private String BASE_URL = "http://192.168.26.9:3000";
     //    ImageButton play, record, stop;
     private static int MICROPHONE_PERMISSION_CODE = 201;
     MediaRecorder mediaRecorder;
@@ -52,7 +59,7 @@ public class AddMessage extends AppCompatActivity {
     InputStream imageStream;
     Uri imageUri;
     public final Integer RESULT_LOAD_IMG = 1;
-    EditText messageTitle, messageContent;
+    EditText messageTitle, messageContent, invisiblef;
     //testing
     ImageView experimentalAudio;
     String stringedAudio;
@@ -61,8 +68,8 @@ public class AddMessage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        retrofit=new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-//        retrofitInterface=retrofit.create(RetrofitInterface.class);
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_message);
         //Record
@@ -71,38 +78,40 @@ public class AddMessage extends AppCompatActivity {
         stop = findViewById(R.id.stop);
         send = findViewById(R.id.send);
         delete = findViewById(R.id.deleteRecord);
+        invisiblef = findViewById(R.id.alo);
         messageTitle = findViewById(R.id.message_title_input);
         messageContent = findViewById(R.id.message_content_input);
         //this was just for testing
-        experimentalAudio = findViewById(R.id.playdecoded);
-        experimentalAudio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(),"encoding",Toast.LENGTH_LONG).show();
-//                stringedImage=encodeImage(selectedImage);
-//                messageContent.setText(stringedImage);
-//                Toast.makeText(getApplicationContext(),"encoded",Toast.LENGTH_LONG).show();
-
-                Bitmap bitmap= decodeImage(messageContent.getText().toString());
-
-                uploaded_image.setImageBitmap(bitmap);
-//            }
-
-            //            @Override
+//        experimentalAudio = findViewById(R.id.playdecoded);
+//        experimentalAudio.setOnClickListener(new View.OnClickListener() {
+//            @Override
 //            public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "encoding", Toast.LENGTH_SHORT).show();
+//                stringedImage = encodeImage(selectedImage);
+//                messageContent.setText(stringedImage);
+//                Toast.makeText(getApplicationContext(), "encoded", Toast.LENGTH_SHORT).show();
 //
-//                try {
-//                    decodeAudio();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-            }
-
-
-        });
+////                Bitmap bitmap= decodeImage(messageContent.getText().toString());
+////
+////                uploaded_image.setImageBitmap(bitmap);
+////            }
+//
+//                //            @Override
+////            public void onClick(View view) {
+////
+////                try {
+////                    decodeAudio();
+////                } catch (IOException e) {
+////                    e.printStackTrace();
+////                }
+//            }
+//
+//
+//        });
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_LONG).show();
                 handleSendingMessage();
             }
         });
@@ -115,8 +124,8 @@ public class AddMessage extends AppCompatActivity {
                 }
                 try {
 //                    play.setImageResource(R.drawable.fatherimg);
-                    stringedAudio ="";
-                    messageContent.setText(stringedAudio);
+                    stringedAudio = "";
+                    invisiblef.setText(stringedAudio);
                     record.setImageResource(R.drawable.its_recording);
                     stop.setVisibility(View.VISIBLE);
                     mediaRecorder = new MediaRecorder();
@@ -173,8 +182,8 @@ public class AddMessage extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stringedAudio="";
-                messageContent.setText(stringedAudio);
+                stringedAudio = "";
+                invisiblef.setText(stringedAudio);
                 delete.setVisibility(View.INVISIBLE);
                 play.setVisibility(View.INVISIBLE);
                 record.setVisibility(View.VISIBLE);
@@ -190,6 +199,7 @@ public class AddMessage extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                stringedImage = "";
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, RESULT_LOAD_IMG);
@@ -200,12 +210,38 @@ public class AddMessage extends AppCompatActivity {
     }
 
 
-
     private void handleSendingMessage() {
         String title = messageTitle.getText().toString();
         String content = messageContent.getText().toString();
-        String voices=stringedAudio;
-//        String images=;
+        String voices = stringedAudio;
+
+//        encodeImage(selectedImage);
+        String images = stringedImage;
+        msgToBeSent.setMsgLabel(title);
+        msgToBeSent.setMsgContent(content);
+        msgToBeSent.setMsgImage(images);
+        msgToBeSent.setMsgVoice(voices);
+        msgToBeSent.setMsgCreationDate(new Date());
+        Call<Void> call = retrofitInterface.addMessage(msgToBeSent);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                messageTitle.setText("");
+                messageContent.setText("");
+                stringedAudio = "";
+                stringedImage = "";
+                Intent intent = new Intent(getApplicationContext(), MessageFragment.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        //        String images=;
 //        Message message=new Message(title,content,);
 
 
@@ -222,7 +258,8 @@ public class AddMessage extends AppCompatActivity {
                 imageUri = data.getData();
                 imageStream = getContentResolver().openInputStream(imageUri);
                 selectedImage = BitmapFactory.decodeStream(imageStream);
-
+                stringedImage = encodeImage(selectedImage);
+                invisiblef.setText(stringedImage);
 
 //                uploaded_image.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
@@ -236,22 +273,25 @@ public class AddMessage extends AppCompatActivity {
     }
 
     private String encodeImage(Bitmap bitmap) {
-        ByteArrayOutputStream stream=new ByteArrayOutputStream();
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
         // compress Bitmap
-        bitmap.compress(Bitmap.CompressFormat.JPEG,40,stream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, stream);
         // Initialize byte array
-        byte[] bytes=stream.toByteArray();
+        byte[] bytes = stream.toByteArray();
         // get base64 encoded string
-        String a=Base64.encodeToString(bytes,Base64.DEFAULT);
+        String a = Base64.encodeToString(bytes, Base64.DEFAULT);
+
         return a;
         // set encoded text on textview
     }
+
     private Bitmap decodeImage(String stringedImage) {
-        byte[] bytes=Base64.decode(stringedImage,Base64.DEFAULT);
+        byte[] bytes = Base64.decode(stringedImage, Base64.DEFAULT);
         // Initialize bitmap
-        Bitmap bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         // set bitmap on imageView
-       return bitmap;
+        return bitmap;
     }
 
     //Record
@@ -290,7 +330,6 @@ public class AddMessage extends AppCompatActivity {
 //        } else {
 //            File audioFile = new File(Environment.getExternalStorageDirectory() + "/encodedFile.txt");
 //            long fileSize = audioFile.length();
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] audioBytes;
 //             = null;
@@ -304,10 +343,12 @@ public class AddMessage extends AppCompatActivity {
 
             // Here goes the Base64 string
             stringedAudio = Base64.encodeToString(audioBytes, Base64.DEFAULT);
-             messageContent.setText(stringedAudio);
+            invisiblef.setText(stringedAudio);
         } catch (FileNotFoundException e) {
+            stringedAudio = "";
             e.printStackTrace();
         } catch (IOException e) {
+            stringedAudio = "";
             e.printStackTrace();
         }
 
