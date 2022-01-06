@@ -21,8 +21,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     private List<Message> messageList;
     private Context mContext;
 
-    public MessagesAdapter(List<Message>messageList, Context context) {
-        this.messageList=messageList;
+    public MessagesAdapter(List<Message> messageList, Context context) {
+        this.messageList = messageList;
         this.mContext = context;
     }
 
@@ -30,7 +30,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     @NonNull
     @Override
     public MessagesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.msg_list_item_design,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.msg_list_item_design, parent, false);
         return new MessagesAdapter.ViewHolder(view);
     }
 
@@ -38,12 +38,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     public void onBindViewHolder(@NonNull MessagesAdapter.ViewHolder holder, int position) {
 
         String msgLabel = messageList.get(position).getMsgLabel();
-        String textContent=messageList.get(position).getTextContent();
-        String[] msgImages=messageList.get(position).getImagesArray();
-        String[] msgVoices=messageList.get(position).getVoicesArray();
-        Date msgCreationDate=messageList.get(position).getCreationDate();
-        holder.setData(msgLabel,textContent,msgImages,msgVoices,msgCreationDate);
-
+        String textContent = messageList.get(position).getMsgContent();
+        String msgImages = messageList.get(position).getMsgImage();
+        String msgVoices = messageList.get(position).getMsgVoice();
+        Date msgCreationDate = messageList.get(position).getMsgCreationDate();
+        holder.setData(msgLabel, textContent, msgImages, msgVoices, msgCreationDate);
 
 
     }
@@ -56,7 +55,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     //view holder class
 
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView msgLabelView;
         private TextView msgContextView;
@@ -67,13 +65,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             super(itemView);
             //here use xml ids
             //give different name not like constructor
-            msgLabelView=itemView.findViewById(R.id.msgLabel);
-            msgContextView=itemView.findViewById(R.id.msgContent);
-            msgCreationDateView=itemView.findViewById(R.id.msgDate);
+            msgLabelView = itemView.findViewById(R.id.msgLabel);
+            msgContextView = itemView.findViewById(R.id.msgContent);
+            msgCreationDateView = itemView.findViewById(R.id.msgDate);
 
-itemView.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 //        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
 //        builder.setTitle(msgLabelView.getText().toString());
 //        builder.setMessage(msgContextView.getText().toString());
@@ -84,24 +82,26 @@ itemView.setOnClickListener(new View.OnClickListener() {
 //            }
 //        });
 //        builder.show();
-        Intent intent=new Intent(mContext, MsgActivity.class);
-        intent.putExtra("Label",msgLabelView.getText().toString());
-        intent.putExtra("Context",msgContextView.getText().toString());
-        intent.putExtra("Date",msgCreationDateView.getText().toString());
-        mContext.startActivity(intent);
-    }
-});
+                    Intent intent = new Intent(mContext, MsgActivity.class);
+                    intent.putExtra("Label", messageList.get(getAdapterPosition()).getMsgLabel());
+                    intent.putExtra("Context", messageList.get(getAdapterPosition()).getMsgContent());
+                    intent.putExtra("Date", messageList.get(getAdapterPosition()).getMsgCreationDate());
+                    intent.putExtra("Image", messageList.get(getAdapterPosition()).getMsgImage());
+                    intent.putExtra("Voice", messageList.get(getAdapterPosition()).getMsgVoice());
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
 
-        public void setData(String msgLabel, String msgContent, String[] msgImages,String[] msgVoices,Date msgCreationDate) {
+        public void setData(String msgLabel, String msgContent, String msgImages, String msgVoices, Date msgCreationDate) {
 
             msgLabelView.setText(msgLabel);
             msgContextView.setText(msgContent);
-            String baseDate=msgCreationDate.toLocaleString();
-            String date=baseDate.toString();
-            msgCreationDateView.setText(date);
+            String baseDate = msgCreationDate.toGMTString();
+            String date = baseDate.substring(0, baseDate.length() - 17) + baseDate.substring(baseDate.length() - 13, baseDate.length() - 7);
 
+            msgCreationDateView.setText(date);
 
 
         }

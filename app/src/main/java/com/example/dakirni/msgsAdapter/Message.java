@@ -12,13 +12,13 @@ public class Message {
     @SerializedName("msgLabel")
     private String msgLabel;
     @SerializedName("msgContent")
-    private String textContent;
-    @SerializedName("creationDate")
-    private Date creationDate;
+    private String msgContent;
+    @SerializedName("msgCreationDate")
+    private Date msgCreationDate;
     @SerializedName("msgVoice")
-    private String[] voicesArray;
-    @SerializedName("msgImages")
-    private String[] imagesArray;
+    private String msgVoice;
+    @SerializedName("msgImage")
+    private String msgImage;
     @SerializedName("is_sent")
     private boolean is_sent;
     @SerializedName("is_delivered")
@@ -35,17 +35,19 @@ public class Message {
 //        this.creationDate = new Date();
     }
 
-    public Message(String msgLabel, String textContent, Date creationDate, String[] voicesArray, String[] imagesArray, boolean is_sent, boolean is_delivered, boolean is_read) {
+    public Message(String msgLabel, String msgContent, Date msgCreationDate, String msgVoice, String msgImage, boolean is_sent, boolean is_delivered, boolean is_read) {
         this.msgId = Math.random()*10000000;
         this.msgLabel = msgLabel;
-        this.textContent = textContent;
-        this.creationDate = creationDate;
-        this.voicesArray = voicesArray;
-        this.imagesArray = imagesArray;
+        this.msgContent = msgContent;
+        this.msgCreationDate = msgCreationDate;
+        this.msgVoice = msgVoice;
+        this.msgImage = msgImage;
         this.is_sent = is_sent;
         this.is_delivered = is_delivered;
         this.is_read = is_read;
     }
+
+
 
     public Double getMsgId() {
         return msgId;
@@ -86,36 +88,36 @@ public class Message {
         this.msgLabel = msgLabel;
     }
 
-    public String getTextContent() {
-        return textContent;
+    public String getMsgContent() {
+        return msgContent;
     }
 
-    public void setTextContent(String textContent) {
-        this.textContent = textContent;
+    public void setMsgContent(String msgContent) {
+        this.msgContent = msgContent;
     }
 
-    public String[] getVoicesArray() {
-        return voicesArray;
+    public String getMsgVoice() {
+        return msgVoice;
     }
 
-    public void setVoicesArray(String[] voicesArray) {
-        this.voicesArray = voicesArray;
+    public void setMsgVoice(String msgVoice) {
+        this.msgVoice = msgVoice;
     }
 
-    public String[] getImagesArray() {
-        return imagesArray;
+    public String getMsgImage() {
+        return msgImage;
     }
 
-    public void setImagesArray(String[] imagesArray) {
-        this.imagesArray = imagesArray;
+    public void setMsgImage(String msgImage) {
+        this.msgImage = msgImage;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    public Date getMsgCreationDate() {
+        return msgCreationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setMsgCreationDate(Date msgCreationDate) {
+        this.msgCreationDate = msgCreationDate;
     }
 
 }
