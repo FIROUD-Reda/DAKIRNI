@@ -16,6 +16,7 @@ import com.example.dakirni.AddMessage;
 import com.example.dakirni.R;
 import com.example.dakirni.RetrofitInterface;
 import com.example.dakirni.databinding.FragmentMessageBinding;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.msgsAdapter.Message;
 import com.example.dakirni.msgsAdapter.MessagesAdapter;
 
@@ -32,15 +33,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MessageFragment extends Fragment {
-
     private FragmentMessageBinding binding;
     RecyclerView mrecyclerView;
     LinearLayoutManager layoutManager;
     List<Message> msgsList = new ArrayList<>();
-
     MessagesAdapter adapter;
-    private String BASE_URL = "http:/192.168.26.9:3000";
-    //private String BASE_URL = "http://10.0.2.2:3000";
+    private String BASE_URL = environementVariablesOfDakirni.backEndUrl;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     View root;
@@ -51,7 +49,7 @@ public class MessageFragment extends Fragment {
         binding = FragmentMessageBinding.inflate(inflater, container, false);
         root = binding.getRoot();
         initDataforson(root);
-        msgsList.add(new Message("Welcome to our assi", "this is it", new Date(), "hi", "ho", false, false, false));
+        msgsList.add(new Message("Welcome to our main page","Green", "this is it", new Date(), "hi", "ho", false, false, false));
 //        initRecyclerView(root);
         View newMsgBtn = root.findViewById(R.id.floatingActionButton);
         newMsgBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,31 +97,18 @@ public class MessageFragment extends Fragment {
 
                 if (response.body() != null) {
                     msgsList = new ArrayList<>();
-                    for (Message a : response.body()) {
-                        msgsList.add(a);
-
+                    for (Message gottenmessages : response.body()) {
+                        msgsList.add(gottenmessages);
                     }
                 }
                 initRecyclerView(root, msgsList);
-
-//                msgsList.set(0, response.body().get(4));
-//                msgsList=response.body();
-
             }
 
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
-                Toast.makeText(root.getContext(), "hello" + t.getMessage(), Toast.LENGTH_LONG).show();
-
+                Toast.makeText(root.getContext(), "We have sadly encountred an error while getting the messages: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
-//        msgsList.add(new Message("Titre1","Col", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
-//        msgsList.add(new Message("Titre2","Content1sdkjskfsdkfsslkjvskdfhsdkjfnsdkjfnsdlfk,sdflkn,sv,xc;vns,fdvsklfdjnsdkjgnkjdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
-//        msgsList.add(new Message("Titre3","Content1sdkjskfsdkfsdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
-//        msgsList.add(new Message("Titre4","Content1sdkjskfsdkfsdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
-//        msgsList.add(new Message("Titre5","Content1sdkjskfsdkfsdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
-//        msgsList.add(new Message("Titre6","Content1sdkjskfsdkfsdhfjsdkbfhdsbfsd", new String[]{"sdfsdf"}, new String[]{"sfsdfsf"}));
 
     }
 
