@@ -43,7 +43,7 @@ String resultOfScan;
         if(intentResult.getContents()!=null){
             resultOfScan=intentResult.getContents();
             AlertDialog.Builder builder=new AlertDialog.Builder(FatherLoginActivity.this);
-            builder.setTitle("REsult");
+            builder.setTitle("Result");
             builder.setMessage(resultOfScan);
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -55,14 +55,8 @@ String resultOfScan;
         } else{
             Toast.makeText(getApplicationContext(),"nthg there",Toast.LENGTH_LONG).show();
         }
-
+        //this part is to be deleted afterwards after login as a father
+        Intent intent=new Intent(this,List_son.class);
+        startActivity(intent);
     }
-//Intent intent=new Intent(FatherLoginActivity.this,List_son.class);
-    //                startActivity(intent);
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Intent intent=new Intent(FatherLoginActivity.this,List_son.class);
-//        startActivity(intent);
-//    }
 }

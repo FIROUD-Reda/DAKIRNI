@@ -11,6 +11,8 @@ public class Message {
     private  Double msgId;
     @SerializedName("msgLabel")
     private String msgLabel;
+    @SerializedName("msgColor")
+    private String msgColor;
     @SerializedName("msgContent")
     private String msgContent;
     @SerializedName("msgCreationDate")
@@ -35,9 +37,10 @@ public class Message {
 //        this.creationDate = new Date();
     }
 
-    public Message(String msgLabel, String msgContent, Date msgCreationDate, String msgVoice, String msgImage, boolean is_sent, boolean is_delivered, boolean is_read) {
+    public Message(String msgLabel,String msgColor, String msgContent, Date msgCreationDate, String msgVoice, String msgImage, boolean is_sent, boolean is_delivered, boolean is_read) {
         this.msgId = Math.random()*10000000;
         this.msgLabel = msgLabel;
+        this.msgColor=msgColor;
         this.msgContent = msgContent;
         this.msgCreationDate = msgCreationDate;
         this.msgVoice = msgVoice;
@@ -47,7 +50,13 @@ public class Message {
         this.is_read = is_read;
     }
 
+    public String getMsgColor() {
+        return msgColor;
+    }
 
+    public void setMsgColor(String msgColor) {
+        this.msgColor = msgColor;
+    }
 
     public Double getMsgId() {
         return msgId;
@@ -120,4 +129,19 @@ public class Message {
         this.msgCreationDate = msgCreationDate;
     }
 
+    @Override
+    public String toString() {
+        return "Message{" +
+                "msgId=" + msgId +
+                ", msgLabel='" + msgLabel + '\'' +
+                ", msgColor='" + msgColor + '\'' +
+                ", msgContent='" + msgContent + '\'' +
+                ", msgCreationDate=" + msgCreationDate +
+                ", msgVoice='" + msgVoice + '\'' +
+                ", msgImage='" + msgImage + '\'' +
+                ", is_sent=" + is_sent +
+                ", is_delivered=" + is_delivered +
+                ", is_read=" + is_read +
+                '}';
+    }
 }

@@ -10,6 +10,8 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dakirni.backgroundServices.FetchMessages;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
