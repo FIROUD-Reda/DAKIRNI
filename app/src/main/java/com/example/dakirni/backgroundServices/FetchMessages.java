@@ -219,14 +219,15 @@ public class FetchMessages extends Service {
 //                                                    File destinationFile = new File(getCacheDir(), gottenMessage.getMsgLabel() + ".mp3");
                                                     ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
                                                     File musicDirectory = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
-                                                  file = new File(musicDirectory, gottenMessage.getMsgLabel() + ".mp3");
+                                                    file = new File(musicDirectory, gottenMessage.getMsgLabel() + ".mp3");
 
-                                                    textToSpeech.synthesizeToFile(contentVoice, null,file, utteranceId);
+                                                    textToSpeech.synthesizeToFile(contentVoice, null, file, utteranceId);
 
                                                     while (!file.exists()) {
                                                         System.out.println("mazal");
                                                     }
-                                                    System.out.println("on peut lire le fichier"+ file.canExecute());;
+                                                    System.out.println("on peut lire le fichier" + file.canExecute());
+                                                    ;
                                                     System.out.println("ha 7na 3mrna l fichier db wha smito" + file.getPath());
 
 //                                                    playAudio(destinationFile.getPath());
@@ -288,7 +289,7 @@ public class FetchMessages extends Service {
                                         MediaPlayer mp = new MediaPlayer();
                                         try {
 //                                            mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel() + "AUDIO"));
-                                            mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel() ));
+                                            mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel()));
 //                                            mp.setDataSource(destinationFile.getPath());
                                         } catch (IOException e) {
                                             e.printStackTrace();
@@ -305,7 +306,7 @@ public class FetchMessages extends Service {
 
                                     }
                                 });
-                                Thread threadLkhr=new Thread(new Runnable() {
+                                Thread threadLkhr = new Thread(new Runnable() {
                                     @Override
                                     public void run() {
                                         threadOfTextSpeech.start();
@@ -353,7 +354,7 @@ public class FetchMessages extends Service {
 
                         threadArrayList.add(threadOfMessages);
                     }
-                    Thread threadexec=new Thread(new Runnable() {
+                    Thread threadexec = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             for (int i = 0; i < threadArrayList.size(); i++) {
@@ -376,8 +377,20 @@ public class FetchMessages extends Service {
                             }
                         }
                     });
-                    threadexec.start();
+                    Thread threadImage = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            threadexec.start();
+                            try {
+                                threadexec.join();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
 
+
+                        }
+                    });
+                    threadImage.start();
                 }
             }
 
