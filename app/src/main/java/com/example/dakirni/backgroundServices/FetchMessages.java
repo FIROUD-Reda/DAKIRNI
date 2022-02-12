@@ -47,8 +47,8 @@ public class FetchMessages extends Service {
     ArrayList<Message> msgsList = new ArrayList<>();
     MediaPlayer mediaPlayer;
     Handler mHandler = new Handler();
-    TextToSpeech textToSpeech;
     String destinationFile;
+    TextToSpeech textToSpeechOfThread;
     File file;
     ArrayList<Thread> threadArrayList = new ArrayList<>();
 
@@ -81,70 +81,6 @@ public class FetchMessages extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
-    public void playAudio() {
-        try {
-            mediaPlayer = new MediaPlayer();
-            String recordingPathFile = getRecordingFilePath("decodedFIle");
-            mediaPlayer.setDataSource(recordingPathFile);
-            mediaPlayer.prepare();
-            mediaPlayer.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    //    public void playAudio(String destFileName) {
-//        try {
-//            MediaPlayer mediaPlayer = new MediaPlayer();
-//            mediaPlayer.reset();
-//            String recordingPathFile = getRecordingFilePath(destFileName);
-//            mediaPlayer.setDataSource(recordingPathFile);
-////            mediaPlayer.setDataSource(context, Uri.parse(recordingPathFile));
-//            mediaPlayer.prepare();
-//
-//            mediaPlayer.start();
-//
-//            while (mediaPlayer.isPlaying()) {
-//            }
-//            mediaPlayer.release();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-    public void playAudio(String filePath) {
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.reset();
-//        String recordingPathFile = getRecordingFilePath(fileName);
-//        String recordingPathFile = getRecordingFilePath(fileName);
-//        try {
-//            mediaPlayer.setDataSource(recordingPathFile);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            mediaPlayer.prepare();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        try {
-//            mediaPlayer.setDataSource(filePath);
-            mediaPlayer.setDataSource(getApplicationContext(), Uri.parse(filePath));
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mediaPlayer.start();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        mediaPlayer.start();
-        mediaPlayer.release();
-
-    }
-
     private String getRecordingFilePath(String fileName) {
         ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
         File musicDirectory = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
@@ -178,7 +114,7 @@ public class FetchMessages extends Service {
                     for (Message gottenMessage : msgsList) {
                         Thread threadOfMessages = new Thread(new Runnable() {
                             Message messageOfThread = gottenMessage;
-                            TextToSpeech textToSpeech;
+                            String contentVoice;
 
                             @Override
                             public void run() {
@@ -188,7 +124,14 @@ public class FetchMessages extends Service {
 //                    ReadAMessage readMessages = new ReadAMessage(filesdir, getApplicationContext());
 //                    readMessages.execute(gottenMessage);
 
-
+                                Thread createMsg=new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
+                                        File musicDirectory = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+                                        file = new File(musicDirectory, messageOfThread.getMsgLabel() + ".mp3");
+                                    }
+                                });
                                 Thread threadOfSynthizingFile = new Thread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -197,68 +140,40 @@ public class FetchMessages extends Service {
                                         destinationFile = getRecordingFilePath(messageOfThread.getMsgLabel().replace(" ", "_"));
                                         System.out.println("ha 7na gadina l fichier db w ha path dyalo" + destinationFile);
                                         System.out.println("hadi khass duz hya tanya");
-                                        textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                                        textToSpeechOfThread = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+
                                             @Override
                                             public void onInit(int status) {
-                                                int result = textToSpeech.setLanguage(Locale.US);
+                                                int result = textToSpeechOfThread.setLanguage(Locale.US);
                                                 if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                                                     Log.e("error", "This Language is not supported");
                                                 }
                                                 if (status == TextToSpeech.SUCCESS) {
-//                                                    HashMap<String, String> myHashRender = new HashMap();
-                                                    String contentVoice = "The message labeled as : " + messageOfThread.getMsgLabel() + " says " + messageOfThread.getMsgContent() + "and the audio says";
-//                                                    myHashRender.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, contentVoice);
-//                                                    textToSpeech.synthesizeToFile(contentVoice, myHashRender, getRecordingFilePathWithout(destinationFile));
-//
-//                                                    File fileTTS = new File(getRecordingFilePath(destinationFile));
-//                                                    while(!fileTTS.exists()){
-//                                                        System.out.println("mazal mazaaal");
-//                                                    }
-
-                                                    final String utteranceId = gottenMessage.getMsgLabel();
-//                                                    File destinationFile = new File(getCacheDir(), gottenMessage.getMsgLabel() + ".mp3");
-                                                    ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
-                                                    File musicDirectory = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
-                                                    file = new File(musicDirectory, gottenMessage.getMsgLabel() + ".mp3");
-
-                                                    textToSpeech.synthesizeToFile(contentVoice, null, file, utteranceId);
-
+                                                    if(!messageOfThread.getMsgVoice().equals("Message with no voice")) {
+                                                        contentVoice = "The message labeled as : " + messageOfThread.getMsgLabel() + " says " + messageOfThread.getMsgContent() + "and the audio says";
+                                                    }else{
+                                                        contentVoice = "The message labeled as : " + messageOfThread.getMsgLabel() + " says " + messageOfThread.getMsgContent() ;
+                                                    }
+                                                    final String utteranceId = messageOfThread.getMsgLabel();
+                                                    createMsg.start();
+                                                    try {
+                                                        createMsg.join();
+                                                    } catch (InterruptedException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    textToSpeechOfThread.synthesizeToFile(contentVoice, null, file, utteranceId);
+                                                    if (file.exists())
+                                                        System.out.println("lol");
                                                     while (!file.exists()) {
                                                         System.out.println("mazal");
                                                     }
                                                     System.out.println("on peut lire le fichier" + file.canExecute());
-                                                    ;
+
                                                     System.out.println("ha 7na 3mrna l fichier db wha smito" + file.getPath());
 
-//                                                    playAudio(destinationFile.getPath());
-//                                                    MediaPlayer mp2 = new MediaPlayer();
                                                     System.out.println("hi reda sa7be 2 ");
 
-
-//                                                    try {
-////                                                        mp2.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel() + "AUDIO"));
-//                                                        mp2.setDataSource(file.getPath());
-////                                            mp.setDataSource(destinationFile.getPath());
-//                                                    } catch (IOException e) {
-//                                                        System.out.println("no amigo");
-//                                                        e.printStackTrace();
-//                                                    }
-//                                                    System.out.println("hi reda sa7be 1 ");
-//                                                    mp2.prepareAsync();
-//                                                    System.out.println("hi reda sa7be");
-//                                                    mp2.setOnPreparedListener(mp -> {
-//                                                        mp.start();
-//                                                        while (mp.isPlaying()) {
-//                                                        }
-//
-//                                                    });
-
-
-                                                    ////before
-                                                    ////after
-
                                                 }
-
                                             }
                                         });
 
@@ -271,13 +186,10 @@ public class FetchMessages extends Service {
                                         threadOfSynthizingFile.start();
                                         try {
                                             threadOfSynthizingFile.join();
+                                            Thread.sleep(4000);
                                         } catch (InterruptedException e) {
                                             e.printStackTrace();
                                         }
-//                                        MediaPlayer mp2=MediaPlayer.create(getApplicationContext(),Uri.parse(file.getPath()));
-//                                        if(mp2!=null)
-//                                            mp2.start();
-
                                         System.out.println("hadi khass duz hya talta");
                                         if (!messageOfThread.getMsgVoice().equals("Message with no voice"))
                                             try {
@@ -285,12 +197,9 @@ public class FetchMessages extends Service {
                                             } catch (IOException e) {
                                                 e.printStackTrace();
                                             }
-//                                        playAudio(messageOfThread.getMsgLabel()+"AUDIO");
                                         MediaPlayer mp = new MediaPlayer();
                                         try {
-//                                            mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel() + "AUDIO"));
                                             mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel()));
-//                                            mp.setDataSource(destinationFile.getPath());
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -315,18 +224,10 @@ public class FetchMessages extends Service {
                                         } catch (InterruptedException e) {
                                             e.printStackTrace();
                                         }
-//                                        if (!messageOfThread.getMsgVoice().equals("Message with no voice"))
-//                                            try {
-//                                                decodeAudio(messageOfThread.getMsgVoice(), messageOfThread.getMsgLabel());
-//                                            } catch (IOException e) {
-//                                                e.printStackTrace();
-//                                            }
-//                                        playAudio(messageOfThread.getMsgLabel()+"AUDIO");
+                                        if(!messageOfThread.getMsgVoice().equals("Message with no voice")) {
                                         MediaPlayer mp = new MediaPlayer();
                                         try {
                                             mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel() + "AUDIO"));
-//                                            mp.setDataSource(getRecordingFilePath(messageOfThread.getMsgLabel() ));
-//                                            mp.setDataSource(destinationFile.getPath());
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
@@ -339,34 +240,37 @@ public class FetchMessages extends Service {
                                         while (mp.isPlaying()) {
                                         }
                                     }
+                                    }
                                 });
-                                threadLkhr.start();
-//                        ShowAMessage showMessages=new ShowAMessage(filesdir,getApplicationContext(),getApplication());
-//                        showMessages.execute(gottenMessage);
-//                        Intent dialogIntent = new Intent(getApplicationContext(),DialogActivity.class);
-//                        dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        getApplication().startActivity(dialogIntent);
-
+                                Thread threadImage=new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        threadLkhr.start();
+                                        try {
+                                            threadLkhr.join();
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        if(!messageOfThread.getMsgImage().equals("Message with no image")) {
+                                            Intent intent = new Intent(FetchMessages.this, PhotoActivity.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            intent.putExtra("image", messageOfThread.getMsgImage());
+                                            intent.putExtra("title", messageOfThread.getMsgLabel());
+                                            intent.putExtra("msg", messageOfThread.getMsgContent());
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+                                threadImage.start();
 //                    updateMsgStatus(gottenMessage);
-
                             }
                         });
-
                         threadArrayList.add(threadOfMessages);
                     }
                     Thread threadexec = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             for (int i = 0; i < threadArrayList.size(); i++) {
-//                        if (i != 0) {
-//                            try {
-//                                int j = i - 1;
-//                                threadArrayList.get(j).join();
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-
                                 threadArrayList.get(i).start();
                                 try {
                                     threadArrayList.get(i).join();
@@ -377,20 +281,8 @@ public class FetchMessages extends Service {
                             }
                         }
                     });
-                    Thread threadImage = new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            threadexec.start();
-                            try {
-                                threadexec.join();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
 
-
-                        }
-                    });
-                    threadImage.start();
+                    threadexec.start();
                 }
             }
 
