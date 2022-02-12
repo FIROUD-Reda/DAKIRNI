@@ -1,15 +1,18 @@
 package com.example.dakirni.AdapterSon;
 
- public class ModelClassforson {
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-  private int imageview;
+public class ModelClassforson {
+
+  private String imageview;
   private String textview1;
   private String textview2;
     private String divider;
 
 
 
-    public ModelClassforson(int imageview, String textview1, String textview2, String divider)
+    public ModelClassforson(String imageview, String textview1, String textview2, String divider)
    {
        this.imageview=imageview;
        this.textview1=textview1;
@@ -17,7 +20,7 @@ package com.example.dakirni.AdapterSon;
        this.divider=divider;
    }
 
-    public int getImageview() {
+    public String getImageview() {
         return imageview;
     }
 
