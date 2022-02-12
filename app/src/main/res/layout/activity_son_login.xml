@@ -36,7 +36,7 @@
 
             <!-- INPUT -->
             <EditText
-                android:id="@+id/username_input"
+                android:id="@+id/email_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/username_icon"
@@ -125,7 +125,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/forgotPassword"
+            android:text="@string/goRegister"
             android:textColor="#1566e0"
             android:textSize="10.5sp" />
 

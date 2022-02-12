@@ -9,6 +9,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.dakirni.database.father.FatherDbHelper;
+import com.example.dakirni.database.son.SonDbHelper;
+
 public class LogoIntro extends AppCompatActivity {
     ImageView imageView;
     Animation topanim;
@@ -25,6 +28,8 @@ public class LogoIntro extends AppCompatActivity {
         imageView.setAnimation(topanim);
 
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+        FatherDbHelper fatherDbHelper = new FatherDbHelper(getApplicationContext());
 
 
         imageView.postDelayed(new Runnable() {
