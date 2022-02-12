@@ -24,6 +24,7 @@ import androidx.print.PrintHelper;
 
 import com.example.dakirni.R;
 import com.example.dakirni.databinding.FragmentQrCodeBinding;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.google.zxing.WriterException;
 
 import androidmads.library.qrgenearator.QRGContents;
@@ -31,7 +32,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 
 public class QrCodeFragment extends Fragment {
 String global_String="nabil lamkadam";
-String global_KEY="auth father";
+String global_KEY= environementVariablesOfDakirni.key;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     private ImageView qrImage;
