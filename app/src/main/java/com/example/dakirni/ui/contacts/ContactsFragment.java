@@ -21,6 +21,7 @@ import com.example.dakirni.AddMessage;
 import com.example.dakirni.R;
 import com.example.dakirni.RetrofitInterface;
 import com.example.dakirni.databinding.ContactsFragmentBinding;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.msgsAdapter.Message;
 
 import java.util.ArrayList;
@@ -40,8 +41,9 @@ public class ContactsFragment extends Fragment {
     List<Contact> contactsList = new ArrayList<>();
     AdapterContact adapter;
 
+    environementVariablesOfDakirni env;
 
-    private String BASE_URL = "http://192.168.8.110:5000";
+    private String BASE_URL = env.BASE_URL;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     View root;

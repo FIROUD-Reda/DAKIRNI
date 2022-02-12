@@ -20,6 +20,7 @@ import com.example.dakirni.AddContactActivity;
 import com.example.dakirni.ParentsDashBoard;
 import com.example.dakirni.R;
 import com.example.dakirni.RetrofitInterface;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -34,12 +35,12 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
 
     private List<Contact> contactList;
     private Context mContext;
-
+    environementVariablesOfDakirni env;
 
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.8.110:5000";
+    private String BASE_URL = env.BASE_URL;
 
 
 

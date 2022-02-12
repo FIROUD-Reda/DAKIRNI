@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dakirni.AdapterContact.Contact;
 import com.example.dakirni.AdapterFather.ModelClass;
 import com.example.dakirni.AdapterFather.MyAdapter;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,9 +44,10 @@ public class List_son extends AppCompatActivity {
     LinearLayoutManager layoutManager;
     List<Contact> sonList;
     MyAdapter adapter;
+    environementVariablesOfDakirni env;
 
     //
-    private String BASE_URL = "http://172.20.10.5:5000";
+    private String BASE_URL = env.BASE_URL;
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
 

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dakirni.AdapterContact.Contact;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.ui.contacts.ContactsFragment;
 import com.example.dakirni.ui.message.MessageFragment;
 import com.google.gson.Gson;
@@ -46,11 +47,11 @@ public class AddContactActivity extends AppCompatActivity {
     TextView tv_add_contact_image;
     ImageView imageView_add_contact;
     Bitmap bitmap;
-
+    environementVariablesOfDakirni env;
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BASE_URL = "http://192.168.8.110:5000";
+    private String BASE_URL = env.BASE_URL;
 
     String stringImage;
     Contact newContact = new Contact();

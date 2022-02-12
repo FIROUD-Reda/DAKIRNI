@@ -17,6 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dakirni">
         <activity
+            android:name=".FatherChoiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateFather"
+            android:exported="false" />
+        <activity
             android:name=".LogoIntro"
             android:exported="true">
             <intent-filter>
@@ -31,6 +43,9 @@
             android:name=".AddMessage"
             android:exported="false" />
         <activity
+            android:name=".AddFather"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
@@ -43,7 +58,7 @@
             android:theme="@style/zxing_CaptureTheme" />
         <activity
             android:name=".ParentsDashBoard"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/title_activity_parents_dash_board"
             android:theme="@style/Theme.Dakirni.NoActionBar" />
         <activity
@@ -54,11 +69,11 @@
             android:exported="false" />
         <activity
             android:name=".List_Parent"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".List_son"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".AddContactActivity"
             android:exported="true" />
