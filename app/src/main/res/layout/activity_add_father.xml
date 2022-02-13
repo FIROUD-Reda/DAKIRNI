@@ -33,22 +33,22 @@
         android:id="@+id/addFather"
         android:layout_width="291dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/myRelation"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="54dp"
         android:layout_marginRight="62dp"
+        android:layout_marginBottom="143dp"
         android:background="@drawable/blue_fill__rounded_color"
         android:fontFamily="@font/poppins_medium"
+
         android:gravity="center"
         android:paddingTop="14dp"
         android:paddingBottom="14dp"
-
         android:text="@string/add"
         android:textColor="#ffffff"
         android:textSize="12sp" />
-
-
-
 
     <TextView
         android:layout_width="wrap_content"

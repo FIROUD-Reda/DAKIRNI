@@ -47,7 +47,7 @@ public class List_Parent extends AppCompatActivity {
         setContentView(R.layout.interface_father);
         initDataforFather();
         initRecyclerView();
-        actionButton = findViewById(R.id.floatingActionButton);
+        actionButton = findViewById(R.id.fab);
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,13 +99,13 @@ public class List_Parent extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                     fatherList = new ArrayList<>();
 
-for(int i=0;i<fathers.size();i++){
+                    for(int i=0;i<fathers.size();i++){
 
 
-    fatherList.add(new ModelClassforson(fathers.get(i).getPhoto(), fathers.get(i).getName(), "kEY:" + fathers.get(i).getKey(), "_______________________________________"));
+                        fatherList.add(new ModelClassforson(fathers.get(i).getPhoto(), fathers.get(i).getName(), "kEY:" + fathers.get(i).getKey(), "_______________________________________"));
 
-}
-initRecyclerView();
+                    }
+                    initRecyclerView();
                 }
                 else if (response.code() == 409) {
                     Toast.makeText(getApplicationContext(),"User not found ! Try Signup !",Toast.LENGTH_LONG).show();

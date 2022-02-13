@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 public class APIClient {
 
-    public static String BASE_URL="http://172.20.10.5:5000";
+    public static String BASE_URL="http://192.168.8.110:5000";
 
     public static Retrofit getRetrofitInstance(){
         return new Retrofit.Builder()
