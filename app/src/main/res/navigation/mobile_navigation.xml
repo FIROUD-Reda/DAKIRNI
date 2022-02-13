@@ -37,4 +37,9 @@
         android:name="com.example.dakirni.ui.contacts.ContactsFragment"
         android:label="@string/menu_contacts"
         tools:layout="@layout/contacts_fragment" />
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.dakirni.ui.logout.LougoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/lougout_fragment" />
 </navigation>

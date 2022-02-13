@@ -67,7 +67,7 @@
         </TextView>
 
         <ImageView
-            android:id="@+id/update"
+            android:id="@+id/update_contact"
             android:layout_width="54dp"
             android:layout_height="38dp"
 
@@ -80,10 +80,10 @@
             app:tint="@color/blue" />
 
         <ImageView
-            android:id="@+id/imageView24"
+            android:id="@+id/delete_contact"
             android:layout_width="49dp"
             android:layout_height="39dp"
-            android:layout_below="@id/update"
+            android:layout_below="@id/update_contact"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="5dp"

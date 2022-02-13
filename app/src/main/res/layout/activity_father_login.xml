@@ -32,11 +32,11 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="62dp"
             android:layout_marginTop="12.7dp"
             android:layout_marginRight="62dp"
-            android:layout_gravity="center"
-            android:background="@drawable/blue_border_rounded_cornwe"/>
+            android:background="@drawable/blue_border_rounded_cornwe" />
 
 
         <TextView
@@ -55,8 +55,7 @@
             android:paddingBottom="14dp"
             android:text="Scan QR to login"
             android:textColor="#ffffff"
-            android:textSize="12sp"
-            />
+            android:textSize="12sp" />
 
 
     </LinearLayout>
