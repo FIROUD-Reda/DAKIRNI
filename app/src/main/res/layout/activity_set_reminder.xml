@@ -71,6 +71,22 @@
                 android:textColor="#ffffff"
                 android:textSize="9sp"
                 tools:layout_editor_absoluteX="133dp" />
+
+            <Button
+                android:id="@+id/update"
+                android:visibility="invisible"
+                android:layout_width="80dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/tv_set_reminder"
+                android:background="@drawable/blue_fill__rounded_color"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/poppins_medium"
+                android:maxHeight="48dp"
+                android:text="@string/update"
+                android:textColor="#ffffff"
+                android:textSize="9sp"
+                tools:layout_editor_absoluteX="133dp" />
         </RelativeLayout>
 
 
@@ -80,7 +96,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayout_set_reminder"
-            tools:layout_editor_absoluteX="-16dp">
+            tools:layout_editor_absoluteX="16dp">
 
             <include
                 layout="@layout/activity_set_reminder_fragment"

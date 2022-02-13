@@ -10,6 +10,8 @@
     <string name="add_voice">Add Voice</string>
     <string name="confirm">Confirm</string>
     <string name="no_image">No image had been selected</string>
+    <string name="image_uploaded">Image successfully uploaded</string>
+
     <string name="no_voice">No voice had been added</string>
     <string name="set_reminder">Set Reminder</string>
     <string name="reminder_title">Reminder Title</string>
@@ -87,5 +89,14 @@
     <string name="msg_title">Title</string>
     <string name="msg_title_content">Enter the message title</string>
     <!-- TODO: Remove or change this placeholder text -->
-
+    <!-- this is for Remainders -->
+    <string name="toggle_flash">Toggle Flash</string>
+    <string name="scanned_data">Scanned Data</string>
+    <string name="audio_recorder">Audio Recorder</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="stop_recording">Stop Recording</string>
+    <string name="play_recording">Play Recording</string>
+    <string name="stop_playing">Stop Playing</string>
+    <string name="status">Status</string>
+    <string name="update">update</string>
 </resources>

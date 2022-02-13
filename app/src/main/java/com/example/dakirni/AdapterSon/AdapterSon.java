@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dakirni.List_son;
 import com.example.dakirni.ParentsDashBoard;
 import com.example.dakirni.R;
+import com.example.dakirni.env;
 
 import java.util.List;
 
@@ -84,6 +85,7 @@ public class AdapterSon extends RecyclerView.Adapter<AdapterSon.ItemViewHolder> 
                     int position = getAdapterPosition();
                     ModelClassforson item = fatherList.get(position);
                 ///to get the key
+                    env.key= item.getTextview2();
                    Toast.makeText(mContext,item.getTextview2(),Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(mContext, ParentsDashBoard.class);
                     mContext.startActivity(intent);

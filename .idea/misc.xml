@@ -4,12 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.21302083333333333" />
-        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_add_message.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/drawable/circle.xml" value="0.16944444444444445" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/drawable/ic_pause_audio.xml" value="0.2203125" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/drawable/ic_start_recording.xml" value="0.1" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/drawable/ic_stop_recording.xml" value="0.1" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_add_message.xml" value="0.22" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_display_image.xml" value="0.1671875" />
         <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_reminder.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_set_reminder.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_set_reminder_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_set_reminder_fragment.xml" value="0.33649289099526064" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/activity_sign_up.xml" value="0.33541666666666664" />
         <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/fragment_message.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/fragment_reminders.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/item_design.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Nabil/Desktop/projandroid/DAKIRNI/app/src/main/res/layout/msgs_list.xml" value="0.25" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_border_rounded_cornwe.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/drawable/blue_circle.xml" value="0.2755208333333333" />
@@ -54,8 +61,6 @@
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/menu/parent_x__dash_board.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/menu/parents_dash_board.xml" value="0.259375" />
         <entry key="..\:/Users/profe/AndroidStudioProjects/DAKIRNI/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2755208333333333" />
-        <entry key="app/src/main/res/drawable/blue_border_rounded_cornwe.xml" value="0.36615384615384616" />
-        <entry key="app/src/main/res/drawable/blue_fill__rounded_color.xml" value="0.36615384615384616" />
         <entry key="app/src/main/res/drawable/ic_wave.xml" value="0.371875" />
         <entry key="app/src/main/res/layout/activity_add_message.xml" value="0.23822463768115942" />
         <entry key="app/src/main/res/layout/activity_father_login.xml" value="0.2056159420289855" />
@@ -66,7 +71,6 @@
         <entry key="app/src/main/res/layout/fragment_msg.xml" value="0.27309782608695654" />
         <entry key="app/src/main/res/layout/fragment_reminders.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/fragment_safezone.xml" value="0.19791666666666666" />
-        <entry key="app/src/main/res/layout/msg_list_item_design.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/msgs_list.xml" value="0.27309782608695654" />
       </map>
     </option>
