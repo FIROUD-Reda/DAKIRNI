@@ -308,6 +308,11 @@ public class FetchMessages extends Service {
                                     }
                                 });
                                 threadUpdateMessageStatus.start();
+                                try {
+                                    threadUpdateMessageStatus.join();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
 //                    updateMsgStatus(gottenMessage);
                             }
                         });
