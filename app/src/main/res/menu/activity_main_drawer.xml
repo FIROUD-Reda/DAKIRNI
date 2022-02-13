@@ -28,5 +28,10 @@
             android:id="@+id/nav_contacts"
             android:icon="@drawable/contacts"
             android:title="@string/menu_contacts" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="@string/menu_logout" />
+
     </group>
 </menu>

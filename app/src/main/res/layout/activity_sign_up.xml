@@ -16,12 +16,13 @@
             android:layout_height="209dp"
             android:background="@drawable/ic_wave">
 
-            <FrameLayout
-                android:layout_width="168dp"
-                android:layout_height="143dp"
+            <ImageView
+                android:id="@+id/register_image"
+                android:layout_width="158dp"
+                android:layout_height="113dp"
                 android:layout_marginLeft="220dp"
                 android:layout_marginTop="70dp"
-                android:background="@drawable/logoapp" />
+                android:background="@drawable/uploading" />
         </FrameLayout>
 
         <RelativeLayout

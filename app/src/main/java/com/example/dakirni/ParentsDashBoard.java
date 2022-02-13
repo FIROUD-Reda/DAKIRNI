@@ -1,12 +1,17 @@
 package com.example.dakirni;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -25,9 +30,11 @@ public class ParentsDashBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         binding = ActivityParentsDashBoardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Toast.makeText(getApplicationContext(), environementVariablesOfDakirni.key, Toast.LENGTH_SHORT).show();
         setSupportActionBar(binding.appBarParentsDashBoard.toolbar);
         /*binding.appBarParentsDashBoard.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +68,17 @@ public class ParentsDashBoard extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_parents_dash_board);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_logout:
+                Intent i = new Intent(this,LogoutActivity.class);
+                this.startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -3,6 +3,9 @@ package com.example.dakirni;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.ContextWrapper;
@@ -22,6 +25,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dakirni.database.father.FatherDbHelper;
+import com.example.dakirni.database.son.SonDbHelper;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.msgsAdapter.Message;
 import com.example.dakirni.ui.message.MessageFragment;
 
@@ -32,7 +38,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +54,7 @@ public class AddMessage extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     //    private String BASE_URL = "http://10.0.2.2:3000";
-    private String BASE_URL = "http://192.168.26.9:3000";
+    private String BASE_URL = environementVariablesOfDakirni.backEndUrl;
     //    ImageButton play, record, stop;
     private static int MICROPHONE_PERMISSION_CODE = 201;
     MediaRecorder mediaRecorder;
@@ -211,6 +219,7 @@ public class AddMessage extends AppCompatActivity {
 
 
     private void handleSendingMessage() {
+
         String title = messageTitle.getText().toString();
         String content = messageContent.getText().toString();
         String voices = stringedAudio;
@@ -222,7 +231,28 @@ public class AddMessage extends AppCompatActivity {
         msgToBeSent.setMsgImage(images);
         msgToBeSent.setMsgVoice(voices);
         msgToBeSent.setMsgCreationDate(new Date());
-        Call<Void> call = retrofitInterface.addMessage(msgToBeSent);
+        msgToBeSent.setIs_sent(false);
+        msgToBeSent.setIs_delivered(false);
+        msgToBeSent.setIs_read(false);
+        msgToBeSent.setMsgColor("Red");
+        msgToBeSent.setFatherKey(environementVariablesOfDakirni.key);
+        Toast.makeText(getApplicationContext(),msgToBeSent.getFatherKey(),Toast.LENGTH_LONG).show();
+        SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
+
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
+        }catch (ArrayIndexOutOfBoundsException e){
+            Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
+            }
+
+        Call<Void> call = retrofitInterface.addMessage(maListe.toString(),msgToBeSent);
+        System.out.println("hello");
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -230,8 +260,7 @@ public class AddMessage extends AppCompatActivity {
                 messageContent.setText("");
                 stringedAudio = "";
                 stringedImage = "";
-                Intent intent = new Intent(getApplicationContext(), MessageFragment.class);
-                startActivity(intent);
+                finish();
             }
 
             @Override
