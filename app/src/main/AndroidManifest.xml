@@ -2,20 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dakirni">
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Dakirni">
+        android:theme="@style/Theme.Dakirni"
+        android:usesCleartextTraffic="true">
+        <service
+            android:name=".TrackingService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".FatherChoiceActivity"
             android:exported="false" />
@@ -33,6 +40,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -70,10 +78,9 @@
         <activity
             android:name=".List_Parent"
             android:exported="false" />
-
         <activity
             android:name=".List_son"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AddContactActivity"
             android:exported="true" />
@@ -87,36 +94,33 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
-<!--        <activity-->
-<!--            android:name=".SafeZoneActivity"-->
-<!--            android:exported="true"-->
-<!--            android:label="@string/title_activity_safe_zone" />-->
-<!--        -->
-<!--        <activity-->
-<!--            android:name=".BaseLocationDialog"-->
-<!--            android:exported="true"-->
-<!--            tools:ignore="Instantiatable" />-->
-<!--        <activity-->
-<!--            android:name=".BaseLocationActivity"-->
-<!--            android:exported="true" />-->
-<!--        <activity-->
-<!--            android:name=".SetReminderActivity"-->
-<!--            android:exported="true" />-->
-<!--        <activity-->
-<!--            android:name=".RemindersActivity"-->
-<!--            android:exported="true" />-->
-<!--        <activity-->
-<!--            android:name=".ui.safezone.BaseLocationActivity"-->
-<!--            android:exported="true" />-->
+            android:value="@string/google_maps_key" /> <!-- <activity -->
+        <!-- android:name=".SafeZoneActivity" -->
+        <!-- android:exported="true" -->
+        <!-- android:label="@string/title_activity_safe_zone" /> -->
+        <!--  -->
+        <!-- <activity -->
+        <!-- android:name=".BaseLocationDialog" -->
+        <!-- android:exported="true" -->
+        <!-- tools:ignore="Instantiatable" /> -->
+        <!-- <activity -->
+        <!-- android:name=".BaseLocationActivity" -->
+        <!-- android:exported="true" /> -->
+        <!-- <activity -->
+        <!-- android:name=".SetReminderActivity" -->
+        <!-- android:exported="true" /> -->
+        <!-- <activity -->
+        <!-- android:name=".RemindersActivity" -->
+        <!-- android:exported="true" /> -->
+        <!-- <activity -->
+        <!-- android:name=".ui.safezone.BaseLocationActivity" -->
+        <!-- android:exported="true" /> -->
         <activity
             android:name=".ui.reminders.SetReminderActivity"
             android:exported="true" />
         <activity
             android:name=".SignUp"
             android:exported="true" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -126,6 +130,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
