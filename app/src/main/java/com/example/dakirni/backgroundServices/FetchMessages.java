@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.example.dakirni.RetrofitInterface;
+import com.example.dakirni.database.father.FatherDbHelper;
+import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.msgsAdapter.Message;
 
@@ -29,6 +31,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -104,11 +107,16 @@ public class FetchMessages extends Service {
 
     private void fetchMsgs() {
         threadArrayList.clear();
-        Call<List<Message>> call = retrofitInterface.getUndeliveredMessages();
+        System.out.println("hello"+environementVariablesOfDakirni.key);
+        Call<List<Message>> call = retrofitInterface.getUndeliveredMessages(environementVariablesOfDakirni.key);
+
         call.enqueue(new Callback<List<Message>>() {
             @Override
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
+                System.out.println("hiii reda2");
+
                 if (response.body() != null && !response.body().isEmpty()) {
+
                     msgsList.clear();
                     msgsList.addAll(response.body());
                     for (Message gottenMessage : msgsList) {
@@ -295,7 +303,21 @@ public class FetchMessages extends Service {
     }
 
     private void updateMsgStatus(Message msgToBeUpdated) {
-        Call<Message> call = retrofitInterface.updateMessage(msgToBeUpdated.getMsgId());
+        SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
+
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
+        }catch (ArrayIndexOutOfBoundsException e){
+            Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
+        }
+
+        Call<Message> call = retrofitInterface.updateMessage(maListe.toString(),msgToBeUpdated.getMsgId(),environementVariablesOfDakirni.key);
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {

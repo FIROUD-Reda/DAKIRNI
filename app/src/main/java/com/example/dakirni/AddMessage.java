@@ -25,6 +25,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dakirni.database.father.FatherDbHelper;
+import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.msgsAdapter.Message;
 import com.example.dakirni.ui.message.MessageFragment;
@@ -36,7 +38,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -215,6 +219,7 @@ public class AddMessage extends AppCompatActivity {
 
 
     private void handleSendingMessage() {
+
         String title = messageTitle.getText().toString();
         String content = messageContent.getText().toString();
         String voices = stringedAudio;
@@ -230,8 +235,24 @@ public class AddMessage extends AppCompatActivity {
         msgToBeSent.setIs_delivered(false);
         msgToBeSent.setIs_read(false);
         msgToBeSent.setMsgColor("Red");
+        msgToBeSent.setFatherKey(environementVariablesOfDakirni.key);
+        Toast.makeText(getApplicationContext(),msgToBeSent.getFatherKey(),Toast.LENGTH_LONG).show();
+        SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
 
-        Call<Void> call = retrofitInterface.addMessage(msgToBeSent);
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
+        }catch (ArrayIndexOutOfBoundsException e){
+            Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
+            }
+
+        Call<Void> call = retrofitInterface.addMessage(maListe.toString(),msgToBeSent);
+        System.out.println("hello");
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

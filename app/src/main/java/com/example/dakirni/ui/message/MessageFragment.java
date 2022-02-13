@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dakirni.AddMessage;
 import com.example.dakirni.R;
 import com.example.dakirni.RetrofitInterface;
+import com.example.dakirni.database.father.FatherDbHelper;
+import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.databinding.FragmentMessageBinding;
 import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.msgsAdapter.Message;
@@ -24,6 +26,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -49,7 +52,7 @@ public class MessageFragment extends Fragment {
         binding = FragmentMessageBinding.inflate(inflater, container, false);
         root = binding.getRoot();
         initDataforson(root);
-        msgsList.add(new Message("Welcome to our main page","Green", "this is it", new Date(), "hi", "ho", false, false, false));
+        msgsList.add(new Message("Welcome to our main page","Green", "this is it", new Date(), "hi", "ho", false, false, false,"falseKey"));
 //        initRecyclerView(root);
         View newMsgBtn = root.findViewById(R.id.floatingActionButton);
         newMsgBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +91,22 @@ public class MessageFragment extends Fragment {
     }
 
     private void initDataforson(View root) {
+        SonDbHelper sonDbHelper = new SonDbHelper(root.getContext());
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
 
-        Call<List<Message>> call = retrofitInterface.getMessages();
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(root.getContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
+        }catch (ArrayIndexOutOfBoundsException e){
+            Toast.makeText(root.getContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
+        }
+
+        Call<List<Message>> call = retrofitInterface.getMessages(maListe.toString(),environementVariablesOfDakirni.key);
+
         call.enqueue(new Callback<List<Message>>() {
 
             @Override

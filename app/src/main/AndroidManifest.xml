@@ -27,6 +27,18 @@
         android:theme="@style/Theme.Dakirni"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".FatherChoiceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateFather"
+            android:exported="false" />
+        <activity
             android:name=".backgroundServices.PhotoActivity"
             android:exported="false" />
         <activity
@@ -42,6 +54,9 @@
             android:exported="false" />
         <activity
             android:name=".AddMessage"
+            android:exported="false" />
+        <activity
+            android:name=".AddFather"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword"

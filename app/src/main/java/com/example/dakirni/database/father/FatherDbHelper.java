@@ -112,4 +112,31 @@ public class FatherDbHelper extends SQLiteOpenHelper {
         }
         return array_list;
     }
+    @SuppressLint("Range")
+    public ArrayList<String> lireKeyFather() {
+        SQLiteDatabase bd = this.getReadableDatabase();
+        ArrayList<String> array_list = new ArrayList<String>();
+        // Colonnes de la Base de Données.
+        String[] projection = {
+                FatherContrat.FatherTable.COLUMN_NAME_KEY,
+        };
+
+        @SuppressLint("Recycle") Cursor c = bd.query(
+                FatherContrat.FatherTable.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        c.moveToFirst();
+
+        while(!c.isAfterLast()){
+            String key = c.getString(c.getColumnIndex(FatherContrat.FatherTable.COLUMN_NAME_KEY));
+            array_list.add(key);
+            c.moveToNext();
+        }
+        return array_list;
+    }
 }

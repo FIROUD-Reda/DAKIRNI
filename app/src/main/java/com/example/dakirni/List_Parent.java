@@ -42,6 +42,11 @@ public class List_Parent extends AppCompatActivity {
     FloatingActionButton actionButton;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        initDataforFather();
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.interface_father);
@@ -119,6 +124,7 @@ public class List_Parent extends AppCompatActivity {
 
             }
         });
+
 
 
 //        fatherList.add(new ModelClassforson(R.drawable.bo, "Nabil", "kEY:" + "eyJhbGciOiJIUzUxMiJ9", "_______________________________________"));

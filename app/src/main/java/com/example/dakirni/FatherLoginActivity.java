@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.dakirni.connectingToBackEnd.Authentification;
 import com.example.dakirni.connection.APIClient;
 import com.example.dakirni.database.father.FatherDbHelper;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.fatherObjects.FatherLogin;
 import com.example.dakirni.fatherObjects.FatherResponse;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -28,20 +29,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class FatherLoginActivity extends AppCompatActivity {
-String resultOfScan;
+    String resultOfScan;
     Retrofit retrofit = APIClient.getRetrofitInstance();
-    Authentification retrofitInterface= retrofit.create(Authentification.class);
+    Authentification retrofitInterface = retrofit.create(Authentification.class);
     FatherDbHelper fatherDbHelper = new FatherDbHelper(FatherLoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_father_login);
-        TextView textView=(TextView) findViewById(R.id.login_father);
+        TextView textView = (TextView) findViewById(R.id.login_father);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IntentIntegrator intentIntegrator=new IntentIntegrator(FatherLoginActivity.this);
+                IntentIntegrator intentIntegrator = new IntentIntegrator(FatherLoginActivity.this);
                 intentIntegrator.setPrompt("To use flash use volume up key");
                 intentIntegrator.setBeepEnabled(true);
                 intentIntegrator.setOrientationLocked(true);
@@ -54,12 +55,12 @@ String resultOfScan;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        IntentResult intentResult=IntentIntegrator.parseActivityResult(
-                requestCode,resultCode,data
+        IntentResult intentResult = IntentIntegrator.parseActivityResult(
+                requestCode, resultCode, data
         );
-        if(intentResult.getContents()!=null){
-            resultOfScan=intentResult.getContents();
-            AlertDialog.Builder builder=new AlertDialog.Builder(FatherLoginActivity.this);
+        if (intentResult.getContents() != null) {
+            resultOfScan = intentResult.getContents();
+            AlertDialog.Builder builder = new AlertDialog.Builder(FatherLoginActivity.this);
             builder.setTitle("Result");
             builder.setMessage(resultOfScan);
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -75,7 +76,7 @@ String resultOfScan;
 
                             if (response.code() == 200) {
                                 FatherResponse result = response.body();
-                                fatherDbHelper.insererDonnee(response.body().get_id(),response.body().getName(),response.body().getKey(),response.body().getAge(),response.body().getRelation());
+                                fatherDbHelper.insererDonnee(response.body().get_id(), response.body().getName(), response.body().getKey(), response.body().getAge(), response.body().getRelation());
                                 ArrayList<String> arrayList = fatherDbHelper.lireTouteDonnees();
                                 StringBuilder maListe = new StringBuilder();
 
@@ -86,17 +87,34 @@ String resultOfScan;
 //                                        Toast.makeText(getApplicationContext(), iter.next(), Toast.LENGTH_SHORT).show();
                                     }
                                     Toast.makeText(getApplicationContext(), "Auth done", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(FatherLoginActivity.this,FatherChoiceActivity.class);
+                                    Toast.makeText(getApplicationContext(), maListe.toString(), Toast.LENGTH_SHORT).show();
+
+
+                                    ArrayList<String> arrayList3 = fatherDbHelper.lireKeyFather();
+                                    StringBuilder maListe3 = new StringBuilder();
+
+                                    try {
+                                        Iterator<String> iter3 = arrayList3.iterator();
+                                        while (iter3.hasNext()) {
+                                            maListe3.append(iter3.next());
+
+//                                        Toast.makeText(getApplicationContext(), iter.next(), Toast.LENGTH_SHORT).show();
+                                        }
+                                        environementVariablesOfDakirni.key = maListe3.toString();
+                                    } catch (ArrayIndexOutOfBoundsException e) {
+                                        e.printStackTrace();
+                                    }//
+
+
+                                    Intent intent = new Intent(FatherLoginActivity.this, FatherChoiceActivity.class);
                                     startActivity(intent);
 
-                                }catch (ArrayIndexOutOfBoundsException e){
+                                } catch (ArrayIndexOutOfBoundsException e) {
 
-                                    Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Aucun Résultat trouvé !", Toast.LENGTH_SHORT).show();
                                 }//
-                            }
-                            else if (response.code() == 409) {
-                                Toast.makeText(getApplicationContext(),"User not found ! Try Signup !",Toast.LENGTH_LONG).show();
+                            } else if (response.code() == 409) {
+                                Toast.makeText(getApplicationContext(), "User not found ! Try Signup !", Toast.LENGTH_LONG).show();
 
                             }
                         }
@@ -104,7 +122,7 @@ String resultOfScan;
                         @Override
                         public void onFailure(Call<FatherResponse> call, Throwable t) {
 
-                            Toast.makeText(getApplicationContext(),"Fail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
                         }
                     });
                     dialogInterface.dismiss();
@@ -112,11 +130,9 @@ String resultOfScan;
                 }
             });
             builder.show();
-        } else{
-            Toast.makeText(getApplicationContext(),"nthg there",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "nthg there", Toast.LENGTH_LONG).show();
         }
         //this part is to be deleted afterwards after login as a father
-        Intent intent=new Intent(this,List_son.class);
-        startActivity(intent);
     }
 }
