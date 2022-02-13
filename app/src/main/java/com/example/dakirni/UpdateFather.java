@@ -124,6 +124,7 @@ upload.setImageBitmap(decodeImage(photo_str_http));
                             Toast.makeText(getApplicationContext(), "User not found ! Try Signup !", Toast.LENGTH_LONG).show();
 
                         }
+                        finish();
                     }
 
                     @Override

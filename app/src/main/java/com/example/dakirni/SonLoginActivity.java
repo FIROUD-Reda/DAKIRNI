@@ -83,6 +83,8 @@ forgotPassword.setOnClickListener(new View.OnClickListener() {
                                 }
                                 Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent();
+
+
                                 intent = new Intent(SonLoginActivity.this, List_Parent.class);
                                 startActivity(intent);
 

@@ -1,5 +1,7 @@
 package com.example.dakirni.connection;
 
+import com.example.dakirni.environements.environementVariablesOfDakirni;
+
 import java.security.cert.CertificateException;
 
 import javax.net.ssl.HostnameVerifier;
@@ -13,8 +15,8 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 public class APIClient {
-
-    public static String BASE_URL="http://192.168.8.110:5000";
+    public static String BASE_URL=environementVariablesOfDakirni.BASE_URL;
+//    public static String BASE_URL="http://192.168.8.109:5000";
 
     public static Retrofit getRetrofitInstance(){
         return new Retrofit.Builder()

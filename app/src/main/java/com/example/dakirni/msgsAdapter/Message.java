@@ -8,9 +8,11 @@ public class Message {
 
 
     @SerializedName("msgId")
-    private  Double msgId;
+    private Double msgId;
     @SerializedName("msgLabel")
     private String msgLabel;
+    @SerializedName("msgColor")
+    private String msgColor;
     @SerializedName("msgContent")
     private String msgContent;
     @SerializedName("msgCreationDate")
@@ -25,9 +27,11 @@ public class Message {
     private boolean is_delivered;
     @SerializedName("is_read")
     private boolean is_read;
+    @SerializedName("fatherKey")
+    private String fatherKey;
 
     public Message() {
-        this.msgId=Math.random()*10000000;
+        this.msgId = Math.random() * 10000000;
 //        this.msgLabel = msgLabel;
 //        this.textContent = textContent;
 //        this.voicesArray = voicesArray;
@@ -35,9 +39,10 @@ public class Message {
 //        this.creationDate = new Date();
     }
 
-    public Message(String msgLabel, String msgContent, Date msgCreationDate, String msgVoice, String msgImage, boolean is_sent, boolean is_delivered, boolean is_read) {
-        this.msgId = Math.random()*10000000;
+    public Message(String msgLabel, String msgColor, String msgContent, Date msgCreationDate, String msgVoice, String msgImage, boolean is_sent, boolean is_delivered, boolean is_read, String fatherKey) {
+        this.msgId = Math.random() * 10000000;
         this.msgLabel = msgLabel;
+        this.msgColor = msgColor;
         this.msgContent = msgContent;
         this.msgCreationDate = msgCreationDate;
         this.msgVoice = msgVoice;
@@ -45,9 +50,16 @@ public class Message {
         this.is_sent = is_sent;
         this.is_delivered = is_delivered;
         this.is_read = is_read;
+        this.fatherKey = fatherKey;
     }
 
+    public String getMsgColor() {
+        return msgColor;
+    }
 
+    public void setMsgColor(String msgColor) {
+        this.msgColor = msgColor;
+    }
 
     public Double getMsgId() {
         return msgId;
@@ -56,6 +68,7 @@ public class Message {
     public void setMsgId(Double msgId) {
         this.msgId = msgId;
     }
+
     public boolean isIs_sent() {
         return is_sent;
     }
@@ -120,4 +133,27 @@ public class Message {
         this.msgCreationDate = msgCreationDate;
     }
 
+    public String getFatherKey() {
+        return fatherKey;
+    }
+
+    public void setFatherKey(String fatherKey) {
+        this.fatherKey = fatherKey;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "msgId=" + msgId +
+                ", msgLabel='" + msgLabel + '\'' +
+                ", msgColor='" + msgColor + '\'' +
+                ", msgContent='" + msgContent + '\'' +
+                ", msgCreationDate=" + msgCreationDate +
+                ", msgVoice='" + msgVoice + '\'' +
+                ", msgImage='" + msgImage + '\'' +
+                ", is_sent=" + is_sent +
+                ", is_delivered=" + is_delivered +
+                ", is_read=" + is_read +
+                '}';
+    }
 }

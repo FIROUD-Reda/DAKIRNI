@@ -112,6 +112,7 @@ public class AddFather extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"User not found ! Try Signup !",Toast.LENGTH_LONG).show();
 
                         }
+                        finish();
                     }
 
                     @Override
