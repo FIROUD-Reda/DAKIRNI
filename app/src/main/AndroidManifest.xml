@@ -18,6 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dakirni"
         android:usesCleartextTraffic="true">
+        <service
+            android:name=".TrackingService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".FatherChoiceActivity"
             android:exported="false" />
@@ -75,7 +80,7 @@
             android:exported="false" />
         <activity
             android:name=".List_son"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AddContactActivity"
             android:exported="true" />

@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,7 +68,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
 //                if(input_confirm_password.getText().toString()==input_password.getText().toString()){
                     SonRegister sonRegister = new SonRegister(input_username.getText().toString(),input_email.getText().toString(),input_password.getText().toString(),stringedImage);
-
+                Log.d("register","register1");
                     Call<SonResponse> call = retrofitInterface.registerSon(sonRegister);
 Toast.makeText(getApplicationContext(),input_username.getText().toString(),Toast.LENGTH_LONG).show();
 Toast.makeText(getApplicationContext(),input_email.getText().toString(),Toast.LENGTH_LONG).show();
@@ -77,6 +78,7 @@ Toast.makeText(getApplicationContext(),input_password.getText().toString(),Toast
                         public void onResponse(Call<SonResponse> call, Response<SonResponse> response) {
 
                             if (response.code() == 200) {
+                                Log.d("register","register");
                                 SonResponse result = response.body();
                                 Toast.makeText(getApplicationContext(),response.body().get_id(),Toast.LENGTH_LONG).show();
                                 Toast.makeText(getApplicationContext(),response.body().getName(),Toast.LENGTH_LONG).show();

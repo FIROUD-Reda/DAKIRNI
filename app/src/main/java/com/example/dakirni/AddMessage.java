@@ -46,7 +46,8 @@ public class AddMessage extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     //    private String BASE_URL = "http://10.0.2.2:3000";
-    private String BASE_URL = "http://192.168.26.9:3000";
+//    private String BASE_URL = "http://192.168.26.9:3000";
+    private String BASE_URL = "http://192.168.1.9:3000";
     //    ImageButton play, record, stop;
     private static int MICROPHONE_PERMISSION_CODE = 201;
     MediaRecorder mediaRecorder;

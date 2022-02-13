@@ -2,7 +2,10 @@ package com.example.dakirni.AdapterFather;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +15,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dakirni.AdapterContact.Contact;
 import com.example.dakirni.R;
 
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private List<ModelClass> userList;
+    private List<Contact> userList;
     private Context mContext;
 
-    public MyAdapter(List<ModelClass>userList, Context context) {
+    public MyAdapter(List<Contact>userList, Context context) {
         this.userList=userList;
         this.mContext = context;
     }
@@ -39,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        int resource = userList.get(position).getImageview();
+        String resource = userList.get(position).getImageview();
         String name=userList.get(position).getTextview1();
         String msg=userList.get(position).getTextview2();
         String line=userList.get(position).getDivider();
@@ -79,7 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 public void onClick(View v) {
                     // Log.d("RecyclerView", "onClick：");
                     int position = getAdapterPosition();
-                    ModelClass item = userList.get(position);
+                    Contact item = userList.get(position);
                    // String uri = "tel:" + item.getTextview2().trim() ;
                     String phone = item.getTextview2().toString();
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
@@ -91,15 +95,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         }
 
-        public void setData(int resource, String name, String msg,String line) {
+        public void setData(String resource, String name, String msg,String line) {
 
-           imageView.setImageResource(resource);
+            imageView.setImageBitmap(decodeImage(resource));
             textView.setText(name);
            textView2.setText(msg);
             divider.setText(line);
 
-
-
         }
+    }
+
+    public Bitmap decodeImage(String stringImage) {
+        byte[] bytes = Base64.decode(stringImage, Base64.DEFAULT);
+        // Initialize bitmap
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        // set bitmap on imageView
+        return bitmap;
     }
 }
