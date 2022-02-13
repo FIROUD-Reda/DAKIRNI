@@ -25,7 +25,7 @@
             android:layout_height="113dp"
             android:layout_marginLeft="220dp"
             android:layout_marginTop="70dp"
-            android:background="@drawable/uploading" />
+            android:src="@drawable/uploading" />
     </FrameLayout>
 
 

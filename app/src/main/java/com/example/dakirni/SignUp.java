@@ -67,37 +67,41 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                if(input_confirm_password.getText().toString()==input_password.getText().toString()){
-                    SonRegister sonRegister = new SonRegister(input_username.getText().toString(),input_email.getText().toString(),input_password.getText().toString(),stringedImage);
-                Log.d("register","register1");
-                    Call<SonResponse> call = retrofitInterface.registerSon(sonRegister);
-Toast.makeText(getApplicationContext(),input_username.getText().toString(),Toast.LENGTH_LONG).show();
-Toast.makeText(getApplicationContext(),input_email.getText().toString(),Toast.LENGTH_LONG).show();
-Toast.makeText(getApplicationContext(),input_password.getText().toString(),Toast.LENGTH_LONG).show();
-                    call.enqueue(new Callback<SonResponse>() {
-                        @Override
-                        public void onResponse(Call<SonResponse> call, Response<SonResponse> response) {
+                  if(input_password.getText().toString()==input_confirm_password.getText().toString()){
+                      SonRegister sonRegister = new SonRegister(input_username.getText().toString(),input_email.getText().toString(),input_password.getText().toString(),stringedImage);
+                      Log.d("register","register1");
+                      Call<SonResponse> call = retrofitInterface.registerSon(sonRegister);
+                      Toast.makeText(getApplicationContext(),input_username.getText().toString(),Toast.LENGTH_LONG).show();
+                      Toast.makeText(getApplicationContext(),input_email.getText().toString(),Toast.LENGTH_LONG).show();
+                      Toast.makeText(getApplicationContext(),input_password.getText().toString(),Toast.LENGTH_LONG).show();
+                      call.enqueue(new Callback<SonResponse>() {
+                          @Override
+                          public void onResponse(Call<SonResponse> call, Response<SonResponse> response) {
 
-                            if (response.code() == 200) {
-                                Log.d("register","register");
-                                SonResponse result = response.body();
-                                Toast.makeText(getApplicationContext(),response.body().get_id(),Toast.LENGTH_LONG).show();
-                                Toast.makeText(getApplicationContext(),response.body().getName(),Toast.LENGTH_LONG).show();
-                                Toast.makeText(getApplicationContext(),response.body().getEmail(),Toast.LENGTH_LONG).show();
-                                Toast.makeText(getApplicationContext(),response.body().getPassword(),Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(),SonLoginActivity.class);
-                                startActivity(intent);
-                            }
-                            else if (response.code() == 409) {
-                                Toast.makeText(getApplicationContext(),"User not found ! Try Signup !",Toast.LENGTH_LONG).show();
+                              if (response.code() == 200) {
+                                  Log.d("register","register");
+                                  SonResponse result = response.body();
+                                  Toast.makeText(getApplicationContext(),response.body().get_id(),Toast.LENGTH_LONG).show();
+                                  Toast.makeText(getApplicationContext(),response.body().getName(),Toast.LENGTH_LONG).show();
+                                  Toast.makeText(getApplicationContext(),response.body().getEmail(),Toast.LENGTH_LONG).show();
+                                  Toast.makeText(getApplicationContext(),response.body().getPassword(),Toast.LENGTH_LONG).show();
+                                  Intent intent = new Intent(getApplicationContext(),SonLoginActivity.class);
+                                  startActivity(intent);
+                              }
+                              else if (response.code() == 409) {
+                                  Toast.makeText(getApplicationContext(),"User not found ! Try Signup !",Toast.LENGTH_LONG).show();
 
-                            }
-                        }
+                              }
+                          }
 
-                        @Override
-                        public void onFailure(Call<SonResponse> call, Throwable t) {
+                          @Override
+                          public void onFailure(Call<SonResponse> call, Throwable t) {
 
-                        }
-                    });
+                          }
+                      });
+                  }else {
+                      Toast.makeText(SignUp.this, "Confirm password incorrect !!", Toast.LENGTH_SHORT).show();
+                  }
 
                 }
 //            }

@@ -46,6 +46,12 @@ public class List_Parent extends AppCompatActivity {
         super.onResume();
         initDataforFather();
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

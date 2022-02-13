@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.dakirni.FatherLoginActivity;
 import com.example.dakirni.RetrofitInterface;
 import com.example.dakirni.database.father.FatherDbHelper;
 import com.example.dakirni.database.son.SonDbHelper;
@@ -54,6 +55,7 @@ public class FetchMessages extends Service {
     TextToSpeech textToSpeechOfThread;
     File file;
     ArrayList<Thread> threadArrayList = new ArrayList<>();
+    FatherDbHelper fatherDbHelper = new FatherDbHelper(FetchMessages.this);
 
     Runnable mRunnableTask = new Runnable() {
         @Override
@@ -67,7 +69,20 @@ public class FetchMessages extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        ArrayList<String> arrayList3 = fatherDbHelper.lireKeyFather();
+        StringBuilder maListe3 = new StringBuilder();
 
+        try {
+            Iterator<String> iter3 = arrayList3.iterator();
+            while (iter3.hasNext()) {
+                maListe3.append(iter3.next());
+
+//                                        Toast.makeText(getApplicationContext(), iter.next(), Toast.LENGTH_SHORT).show();
+            }
+            environementVariablesOfDakirni.key = maListe3.toString();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
         mHandler.postDelayed(mRunnableTask, 100);
@@ -269,7 +284,30 @@ public class FetchMessages extends Service {
                                         }
                                     }
                                 });
-                                threadImage.start();
+                                Thread threadUpdateMessageStatus=new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        System.out.println("9bl manbda");
+                                        threadImage.start();
+                                        System.out.println("b3d manbda");
+
+                                        try {
+                                            System.out.println("9bl mantssna");
+
+                                            threadImage.join();
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        System.out.println("b3d mantssna");
+                                        System.out.println("9bl update");
+
+                                        updateMsgStatus(messageOfThread);
+                                        System.out.println("b3d update");
+
+
+                                    }
+                                });
+                                threadUpdateMessageStatus.start();
 //                    updateMsgStatus(gottenMessage);
                             }
                         });
@@ -312,12 +350,10 @@ public class FetchMessages extends Service {
             while (iter.hasNext()) {
                 maListe.append(iter.next());
             }
-            Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
         }catch (ArrayIndexOutOfBoundsException e){
-            Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
         }
 
-        Call<Message> call = retrofitInterface.updateMessage(maListe.toString(),msgToBeUpdated.getMsgId(),environementVariablesOfDakirni.key);
+        Call<Message> call = retrofitInterface.updateMessage(msgToBeUpdated.getMsgId(),environementVariablesOfDakirni.key);
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {

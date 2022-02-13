@@ -19,7 +19,7 @@ public interface RetrofitInterface {
     @POST("/api/message/post")
     Call<Void> addMessage(@Header ("Auth-Token") String header,@Body Message sentMessage);
     @PUT("/api/message/delivered/{msgId}/{fatherKey}")
-    Call<Message> updateMessage(@Header ("Auth-Token") String header,@Path("msgId") Double msgId,@Path("fatherKey") String fatherKey);
+    Call<Message> updateMessage(@Path("msgId") Double msgId,@Path("fatherKey") String fatherKey);
     @GET("/api/message/get/{fatherKey}")
     Call<List<Message>> getMessages(@Header ("Auth-Token") String header,@Path("fatherKey") String fatherKey);
     @GET("/api/message/get/undelivered/{fatherKey}")

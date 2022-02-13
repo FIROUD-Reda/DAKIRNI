@@ -90,20 +90,7 @@ public class FatherLoginActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), maListe.toString(), Toast.LENGTH_SHORT).show();
 
 
-                                    ArrayList<String> arrayList3 = fatherDbHelper.lireKeyFather();
-                                    StringBuilder maListe3 = new StringBuilder();
-
-                                    try {
-                                        Iterator<String> iter3 = arrayList3.iterator();
-                                        while (iter3.hasNext()) {
-                                            maListe3.append(iter3.next());
-
-//                                        Toast.makeText(getApplicationContext(), iter.next(), Toast.LENGTH_SHORT).show();
-                                        }
-                                        environementVariablesOfDakirni.key = maListe3.toString();
-                                    } catch (ArrayIndexOutOfBoundsException e) {
-                                        e.printStackTrace();
-                                    }//
+                                  //
 
 
                                     Intent intent = new Intent(FatherLoginActivity.this, FatherChoiceActivity.class);

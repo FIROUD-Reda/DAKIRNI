@@ -13,6 +13,10 @@ import com.example.dakirni.backgroundServices.FetchMessages;
 public class FatherChoiceActivity extends AppCompatActivity {
 Button list_sons, game;
     @Override
+    public void onBackPressed() {
+
+    }
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_father_choice);
