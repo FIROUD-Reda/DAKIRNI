@@ -9,6 +9,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,9 @@ public class displayImage extends AppCompatActivity {
             ImageView carView =findViewById(R.id.imageView);
             titre=findViewById(R.id.titleR);
             msgtext=findViewById(R.id.textR);
+            Log.d("nabila",stringimage);
             byte[] decodedString = Base64.decode(stringimage, Base64.NO_WRAP);
+            Log.d("jamila",decodedString.toString());
             InputStream input=new ByteArrayInputStream(decodedString);
             Bitmap ext_pic = BitmapFactory.decodeStream(input);
             carView.setImageBitmap(ext_pic);

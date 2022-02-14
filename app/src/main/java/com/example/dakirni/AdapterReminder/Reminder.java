@@ -31,7 +31,8 @@ public class Reminder {
     private String image;
     @SerializedName("Reminder_voice")
     private String voice;
-    private String key;
+    @SerializedName("fatherKey")
+    private String fatherKey;
 
     /**/    public String getReminder_id() {
         return reminder_id;
@@ -39,7 +40,7 @@ public class Reminder {
 
     public Reminder(int hour, int minute, boolean is_active, boolean is_repeating,
                     boolean mon, boolean tue, boolean wed, boolean thu, boolean fri, boolean sat, boolean sun,
-                    String title, String text, String image, String voice, String key) {
+                    String title, String text, String image, String voice, String fatherKey) {
         this.hour = hour;
         this.minute = minute;
         this.is_active = true;
@@ -55,15 +56,15 @@ public class Reminder {
         this.text = text;
         this.image = "image";
         this.voice = "voice";
-        this.key=key ;
+        this.fatherKey=fatherKey ;
     }
 
     public String getKey() {
-        return key;
+        return fatherKey;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this.fatherKey = fatherKey;
     }
 
     public int getHour() {

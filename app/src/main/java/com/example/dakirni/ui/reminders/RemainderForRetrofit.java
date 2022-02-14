@@ -10,8 +10,7 @@ public class RemainderForRetrofit {
     Boolean is_sent =true;
     private String Reminder_voice ;
     private boolean mon, tue, wed, thu, fri, sat, sun;
-    private String key ;
-
+    private String fatherKey;
     int hour,minute ;
     private String photo;
 //
@@ -23,8 +22,15 @@ public class RemainderForRetrofit {
     public RemainderForRetrofit() {
     }
 
+    public void setFatherKey(String fatherKey) {
+        this.fatherKey = fatherKey;
+    }
 
-    public RemainderForRetrofit(String reminder_content, String reminder_title, Boolean isRepeat, Boolean is_sent, String reminder_voice, boolean mon, boolean tue, boolean wed, boolean thu, boolean fri, boolean sat, boolean sun, int hour, int minute, String photo, String key) {
+    public String getFatherKey() {
+        return fatherKey;
+    }
+
+    public RemainderForRetrofit(String reminder_content, String reminder_title, Boolean isRepeat, Boolean is_sent, String reminder_voice, boolean mon, boolean tue, boolean wed, boolean thu, boolean fri, boolean sat, boolean sun, int hour, int minute, String photo, String fatherKey) {
         Reminder_content = reminder_content;
         Reminder_title = reminder_title;
         this.isRepeat = isRepeat;
@@ -40,16 +46,9 @@ public class RemainderForRetrofit {
         this.hour = hour;
         this.minute = minute;
         this.photo = photo;
-        this.key = key;
+        this.fatherKey=fatherKey ;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 
     public void setPhoto(String photo) {
         this.photo = photo;

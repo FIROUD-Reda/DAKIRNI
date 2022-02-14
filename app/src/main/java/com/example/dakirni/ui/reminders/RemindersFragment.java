@@ -20,6 +20,7 @@ import com.example.dakirni.AdapterReminder.ReminderAdapter;
 import com.example.dakirni.R;
 import com.example.dakirni.databinding.FragmentRemindersBinding;
 import com.example.dakirni.env;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,7 @@ public class RemindersFragment extends Fragment {
 //            Toast.makeText(getContext(),  "msg", Toast.LENGTH_SHORT).show();
 //        }
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.8.101:3001/")
+                .baseUrl(environementVariablesOfDakirni.backEndUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiInterfaceRemainder = retrofit.create(ApiInterfaceRemainder.class);
@@ -81,7 +82,7 @@ public class RemindersFragment extends Fragment {
             }
         });
 
-        initReminders();
+//        initReminders();
 //        initRemindersRecyclerView(root);
 
         return root;
@@ -105,8 +106,8 @@ public class RemindersFragment extends Fragment {
 
     private void initReminders() {
         reminders = new ArrayList<>();
-        env.key="2";
-        Call<List<Reminder>> call =apiInterfaceRemainder.getRemaiders(env.key) ;
+        reminders.clear();
+        Call<List<Reminder>> call =apiInterfaceRemainder.getRemaiders(environementVariablesOfDakirni.key) ;
         call.enqueue(new Callback<List<Reminder>>() {
             @Override
             public void onResponse(Call<List<Reminder>> call, Response<List<Reminder>> response) {

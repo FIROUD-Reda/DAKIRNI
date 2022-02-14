@@ -31,7 +31,9 @@ import android.widget.Toast;
 
 import com.example.dakirni.AdapterReminder.Reminder;
 import com.example.dakirni.R;
+import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.env;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,6 +44,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -106,7 +109,7 @@ public class SetReminderActivity extends AppCompatActivity {
         stringedAudio="";
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.8.101:3001/")
+                .baseUrl(environementVariablesOfDakirni.backEndUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiInterfaceRemainder = retrofit.create(ApiInterfaceRemainder.class);
@@ -308,12 +311,13 @@ public class SetReminderActivity extends AppCompatActivity {
                 String voices = stringedAudio;
                 String images = stringedImage;
                 String number123 =reminder_id;
-                RemainderForRetrofit remainderForRetrofit2 = new RemainderForRetrofit(input_text.getText().toString(), input_title.getText().toString(), isRepeat, is_sent, voices, mon, tue, wed, thu, fri, sat, sun, hour, minute, images,"2");
+                RemainderForRetrofit remainderForRetrofit2 = new RemainderForRetrofit(input_text.getText().toString(), input_title.getText().toString(), isRepeat, is_sent, voices, mon, tue, wed, thu, fri, sat, sun, hour, minute, images,environementVariablesOfDakirni.key);
                 Call<Void> call = apiInterfaceRemainder.updateReminder(reminder_id ,remainderForRetrofit2);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         Toast.makeText(getApplicationContext(), response.body()+"", Toast.LENGTH_SHORT).show();
+                        Log.d("testupdate",response.body()+"");
                         finish();
                     }
                     @Override
@@ -326,7 +330,7 @@ public class SetReminderActivity extends AppCompatActivity {
         deleteR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Void> call = apiInterfaceRemainder.removereminder(reminder_id );
+                Call<Void> call = apiInterfaceRemainder.removereminder(reminder_id);
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -351,12 +355,25 @@ public class SetReminderActivity extends AppCompatActivity {
                 String content = input_text.getText().toString();
                 String voices = stringedAudio;
                 String images = stringedImage;
+                SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+                ArrayList<String> arrayList = sonDbHelper.lireToken();
+                StringBuffer maListe = new StringBuffer();
 
-                RemainderForRetrofit remainderForRetrofit1 = new RemainderForRetrofit(input_text.getText().toString(), input_title.getText().toString(), isRepeat, is_sent, voices, mon, tue, wed, thu, fri, sat, sun, hour, minute, images,"2");
-                Call<Void> call = apiInterfaceRemainder.addReminder(remainderForRetrofit1);
-                call.enqueue(new Callback<Void>() {
+                try {
+                    Iterator<String> iter = arrayList.iterator();
+                    while (iter.hasNext()) {
+                        maListe.append(iter.next());
+                    }
+                    Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
+                }catch (ArrayIndexOutOfBoundsException e){
+                    Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
+                }
+                RemainderForRetrofit remainderForRetrofit1 = new RemainderForRetrofit(input_text.getText().toString(), input_title.getText().toString(), isRepeat, is_sent, voices, mon, tue, wed, thu, fri, sat, sun, hour, minute, images,environementVariablesOfDakirni.key);
+                Call<Void> call = apiInterfaceRemainder.addReminder(maListe.toString(),remainderForRetrofit1);
+                   call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
+
                         input_text.setText("");
                         input_title.setText("");
                         stringedAudio = "";
