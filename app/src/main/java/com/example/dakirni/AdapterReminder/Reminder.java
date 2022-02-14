@@ -4,43 +4,67 @@ package com.example.dakirni.AdapterReminder;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Calendar;
 import java.util.UUID;
 
 public class Reminder {
-    private String Reminder_content ;
-    private String Reminder_title;
-    private String reminder_id = UUID.randomUUID().toString();;
-    private int hour, minute;
-    private boolean is_active, is_repeating;
-    private boolean mon, tue, wed, thu, fri, sat, sun;
-    private String title;
-    private String text;
-    private String image;
-    private String voice;
 
-/**/    public String getReminder_id() {
+    @SerializedName("_id")
+    private String reminder_id = UUID.randomUUID().toString();
+    @SerializedName("minute")
+    private int  minute;
+    @SerializedName("hour")
+    private int hour;
+    @SerializedName("isRepeat")
+    private boolean is_repeating;
+    @SerializedName("is_active")
+    private boolean is_active;
+    //Reminder_days
+    private boolean mon, tue, wed, thu, fri, sat, sun;
+    @SerializedName("Reminder_title")
+    private String title;
+    @SerializedName("Reminder_content")
+    private String text;
+    @SerializedName("photo")
+    private String image;
+    @SerializedName("Reminder_voice")
+    private String voice;
+    @SerializedName("fatherKey")
+    private String fatherKey;
+
+    /**/    public String getReminder_id() {
         return reminder_id;
     }
 
     public Reminder(int hour, int minute, boolean is_active, boolean is_repeating,
                     boolean mon, boolean tue, boolean wed, boolean thu, boolean fri, boolean sat, boolean sun,
-                    String title, String text, String image, String voice) {
+                    String title, String text, String image, String voice, String fatherKey) {
         this.hour = hour;
         this.minute = minute;
-        this.is_active = is_active;
+        this.is_active = true;
         this.is_repeating = is_repeating;
-        this.mon = mon;
-        this.tue = tue;
-        this.wed = wed;
-        this.thu = thu;
-        this.fri = fri;
-        this.sat = sat;
-        this.sun = sun;
+        this.mon = true;
+        this.tue = true;
+        this.wed = true;
+        this.thu = true;
+        this.fri = true;
+        this.sat = true;
+        this.sun = true;
         this.title = title;
         this.text = text;
-        this.image = image;
-        this.voice = voice;
+        this.image = "image";
+        this.voice = "voice";
+        this.fatherKey=fatherKey ;
+    }
+
+    public String getKey() {
+        return fatherKey;
+    }
+
+    public void setKey(String key) {
+        this.fatherKey = fatherKey;
     }
 
     public int getHour() {
@@ -166,5 +190,95 @@ public class Reminder {
             repeating_days+= "sun, ";
         }
         return repeating_days;
+    }
+
+
+
+    public void setReminder_id(String reminder_id) {
+        this.reminder_id = reminder_id;
+    }
+
+    public void setIs_active(boolean is_active) {
+        this.is_active = is_active;
+    }
+
+    public void setMon(boolean mon) {
+        this.mon = mon;
+    }
+
+    public void setTue(boolean tue) {
+        this.tue = tue;
+    }
+
+    public void setWed(boolean wed) {
+        this.wed = wed;
+    }
+
+    public void setThu(boolean thu) {
+        this.thu = thu;
+    }
+
+    public void setFri(boolean fri) {
+        this.fri = fri;
+    }
+
+    public void setSat(boolean sat) {
+        this.sat = sat;
+    }
+
+    public void setSun(boolean sun) {
+        this.sun = sun;
+    }
+
+
+
+    public boolean isMon() {
+        return mon;
+    }
+
+    public boolean isTue() {
+        return tue;
+    }
+
+    public boolean isWed() {
+        return wed;
+    }
+
+    public boolean isThu() {
+        return thu;
+    }
+
+    public boolean isFri() {
+        return fri;
+    }
+
+    public boolean isSat() {
+        return sat;
+    }
+
+    public boolean isSun() {
+        return sun;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "reminder_id='" + reminder_id + '\'' +
+                ", minute=" + minute +
+                ", hour=" + hour +
+                ", is_repeating=" + is_repeating +
+                ", is_active=" + is_active +
+                ", mon=" + mon +
+                ", tue=" + tue +
+                ", wed=" + wed +
+                ", thu=" + thu +
+                ", fri=" + fri +
+                ", sat=" + sat +
+                ", sun=" + sun +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", image='" + image + '\'' +
+                ", voice='" + voice + '\'' +
+                '}';
     }
 }

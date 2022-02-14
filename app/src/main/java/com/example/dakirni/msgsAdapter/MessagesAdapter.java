@@ -2,9 +2,11 @@ package com.example.dakirni.msgsAdapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,7 +44,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         String msgImages = messageList.get(position).getMsgImage();
         String msgVoices = messageList.get(position).getMsgVoice();
         Date msgCreationDate = messageList.get(position).getMsgCreationDate();
-        holder.setData(msgLabel, textContent, msgImages, msgVoices, msgCreationDate);
+        String msgColor=messageList.get(position).getMsgColor();
+        holder.setData(msgLabel,msgColor, textContent, msgImages, msgVoices, msgCreationDate);
 
 
     }
@@ -59,7 +62,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         private TextView msgLabelView;
         private TextView msgContextView;
         private TextView msgCreationDateView;
-
+        private View msgStatusView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,7 +71,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             msgLabelView = itemView.findViewById(R.id.msgLabel);
             msgContextView = itemView.findViewById(R.id.msgContent);
             msgCreationDateView = itemView.findViewById(R.id.msgDate);
-
+            msgStatusView=itemView.findViewById(R.id.msg_status_view);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -94,10 +97,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
         }
 
-        public void setData(String msgLabel, String msgContent, String msgImages, String msgVoices, Date msgCreationDate) {
+        public void setData(String msgLabel,String msgColor, String msgContent, String msgImages, String msgVoices, Date msgCreationDate) {
 
             msgLabelView.setText(msgLabel);
             msgContextView.setText(msgContent);
+            msgStatusView.setBackgroundColor(Color.parseColor(msgColor));
             String baseDate = msgCreationDate.toGMTString();
             String date = baseDate.substring(0, baseDate.length() - 17) + baseDate.substring(baseDate.length() - 13, baseDate.length() - 7);
 

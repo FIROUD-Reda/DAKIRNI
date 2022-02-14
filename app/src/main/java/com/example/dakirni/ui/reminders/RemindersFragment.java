@@ -2,10 +2,12 @@ package com.example.dakirni.ui.reminders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,13 +15,21 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dakirni.AdapterReminder.Reminder;
 import com.example.dakirni.AdapterReminder.ReminderAdapter;
 import com.example.dakirni.R;
-import com.example.dakirni.AdapterReminder.Reminder;
 import com.example.dakirni.databinding.FragmentRemindersBinding;
+import com.example.dakirni.env;
+import com.example.dakirni.environements.environementVariablesOfDakirni;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RemindersFragment extends Fragment {
 
@@ -31,14 +41,36 @@ public class RemindersFragment extends Fragment {
     private LinearLayoutManager linearLayoutManager;
     private ReminderAdapter reminderAdapter;
     private List<Reminder> reminders;
+    ApiInterfaceRemainder apiInterfaceRemainder;
+    Retrofit retrofit;
+    View root;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initReminders();
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         remindersViewModel =
                 new ViewModelProvider(this).get(RemindersViewModel.class);
 
         binding = FragmentRemindersBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        root = binding.getRoot();
+//        Bundle extras = getActivity().getIntent().getExtras() ;
+//
+//        if (extras != null) {
+//            String msg = extras.getString("msgrmove");
+//
+//            Toast.makeText(getContext(),  "msg", Toast.LENGTH_SHORT).show();
+//        }
+        retrofit = new Retrofit.Builder()
+                .baseUrl(environementVariablesOfDakirni.backEndUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiInterfaceRemainder = retrofit.create(ApiInterfaceRemainder.class);
 
         btn_add_reminder = root.findViewById(R.id.btn_add_reminder);
 
@@ -50,8 +82,8 @@ public class RemindersFragment extends Fragment {
             }
         });
 
-        initReminders();
-        initRemindersRecyclerView(root);
+//        initReminders();
+//        initRemindersRecyclerView(root);
 
         return root;
     }
@@ -62,7 +94,7 @@ public class RemindersFragment extends Fragment {
         binding = null;
     }
 
-    public void initRemindersRecyclerView(View root) {
+    public void initRemindersRecyclerView(View root, List<Reminder> reminders) {
         recyclerView_reminders = root.findViewById(R.id.recyclerView_reminders);
         linearLayoutManager = new LinearLayoutManager(root.getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -74,21 +106,32 @@ public class RemindersFragment extends Fragment {
 
     private void initReminders() {
         reminders = new ArrayList<>();
+        reminders.clear();
+        Call<List<Reminder>> call =apiInterfaceRemainder.getRemaiders(environementVariablesOfDakirni.key) ;
+        call.enqueue(new Callback<List<Reminder>>() {
+            @Override
+            public void onResponse(Call<List<Reminder>> call, Response<List<Reminder>> response) {
+                for (Reminder a : response.body()) {
+                     reminders.add(a);
 
-        reminders.add(new Reminder( 10, 10, true,false,
-                true,false,true,false,true,false,true,
-                "Reminder1","text1","image1","voice1"));
-        reminders.add(new Reminder( 23, 10, true,false,
-                true,false,true,false,true,false,true,
-                "Reminder2","text1","image1","voice1"));
-        reminders.add(new Reminder( 17, 10, true,false,
-                true,false,true,false,true,false,true,
-                "Reminder3","text1","image1","voice1"));
-        reminders.add(new Reminder( 13, 10, true,false,
-                true,false,true,false,true,false,true,
-                "Reminder4","text1","image1","voice1"));
-        reminders.add(new Reminder( 12, 10, true,false,
-                true,false,true,false,true,false,true,
-                "Reminder5", "text1", "image1", "voice1"));
+            }
+
+
+           //     Toast.makeText(getContext(),  response.body().toString()  response.body().toString(), Toast.LENGTH_SHORT).show();
+            initRemindersRecyclerView(root, reminders);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Reminder>> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("nabil",t.getMessage());
+            }
+        });
+
+
+
     }
-}
+
+
+    }
