@@ -30,10 +30,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class TrackingService extends Service {
 
     private static final String TAG = TrackingService.class.getSimpleName();
     environementVariablesOfDakirni env;
+
+    private String BASE_URL = env.BASE_URL;
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
 
     public TrackingService() {
     }
@@ -47,12 +54,15 @@ public class TrackingService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+
         trackNotification();
         locationUpdates();
     }
 
-    //Create the persistent notification//
-
+    //Create the notification
     private void trackNotification() {
         Log.d("notif", "start");
         String stop = "stop";
@@ -72,10 +82,28 @@ public class TrackingService extends Service {
         Log.d("notif", "end");
     }
 
+    private void safeZoneNotification(String notificationText) {
+        Log.d("notif", "start");
+        String stop = "stop";
+        registerReceiver(stopReceiver, new IntentFilter(stop));
+        PendingIntent broadcastIntent = PendingIntent.getBroadcast(
+                this, 0, new Intent(stop), PendingIntent.FLAG_UPDATE_CURRENT);
+
+        // Create notification
+        Notification.Builder builder = new Notification.Builder(this)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(notificationText)
+                .setOngoing(true)
+                .setContentIntent(broadcastIntent)
+                .setSmallIcon(R.drawable.ic_baseline_warning_24);
+        startForeground(1, builder.build());
+
+        Log.d("notif", "end");
+    }
+
     protected BroadcastReceiver stopReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-
             Log.d("bc", "start");
             unregisterReceiver(stopReceiver);
         //Stop the Service
@@ -84,44 +112,7 @@ public class TrackingService extends Service {
         }
     };
 
-//    private void loginToFirebase() {
-//        Log.d("login", "start");
-
-////Authenticate with Firebase, using the email and password we created earlier//
-//
-//        String email = env.key+"@gmail.com";
-//        String password = env.key;
-//
-//
-////Call OnCompleteListener if the user is signed in successfully//
-//
-//        FirebaseAuth.getInstance().signInWithEmailAndPassword(
-//                email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(Task<AuthResult> task) {
-//
-////If the user has been authenticated...//
-//
-//                if (task.isSuccessful()) {
-//
-////...then call locationUpdates//
-////                    Toast.makeText(getApplicationContext(),"auth",Toast.LENGTH_LONG).show();
-//                    Log.d(TAG, "Firebase authentication done");
-//                    locationUpdates();
-//                } else {
-//
-////If sign in fails, then log the error//
-//
-//                    Log.d(TAG, "Firebase authentication failed");
-//                }
-//            }
-//        });
-
-//        locationUpdates();
-//        Log.d("login", "end");
-//    }
-
-    //Track the device's location//
+    //Track the device's location
     private void locationUpdates() {
 
         Log.d("up", "start");
@@ -133,21 +124,21 @@ public class TrackingService extends Service {
 
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
-//        final String path = getString(R.string.firebase_path);
+
         int permission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
 
-        //Check the location permission
+        // Check the location permission
 
         if (permission == PackageManager.PERMISSION_GRANTED) {
 
-//...then request location updates//
+            // Request location updates
 
             client.requestLocationUpdates(request, new LocationCallback() {
                 @Override
                 public void onLocationResult(LocationResult locationResult) {
 
-//Get a reference to the database, so your app can perform read and write operations//
+            //Get a reference to the database
 
                     Location location = locationResult.getLastLocation();
                     //reference to the database
@@ -160,15 +151,6 @@ public class TrackingService extends Service {
                     } else {
                         Log.e("Location", "No location found");
                     }
-
-//                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Location");
-//                    Location location = locationResult.getLastLocation();
-//                    if (location != null) {
-//
-////Save the location data to the database//
-//
-//                        ref.setValue(location);
-//                    }
                 }
             }, null);
         }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Parcelable;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -141,6 +142,20 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
                     int pos = getAdapterPosition();
                     Contact deletedContact = contactList.get(pos);
                     deleteContact(deletedContact);
+                }
+            });
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    Contact contact = contactList.get(pos);
+                    String number = contact.getTextview2();
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + number));
+                    if (intent.resolveActivity(mContext.getPackageManager()) != null) {
+                        mContext.startActivity(intent);
+                    }
                 }
             });
         }

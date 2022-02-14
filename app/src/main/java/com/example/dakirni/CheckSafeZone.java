@@ -3,25 +3,25 @@ package com.example.dakirni;
 public class CheckSafeZone {
     static int INF = 30000;
 
-    static class Point
+    static class Location
     {
-        int x;
-        int y;
+        int lat;
+        int lng;
 
-        public Point(int x, int y)
+        public Location(int lat, int lng)
         {
-            this.x = x;
-            this.y = y;
+            this.lat = lat;
+            this.lng = lng;
         }
     };
 
-    // Check if point q [pr]
-    static boolean onSegment(Point p, Point q, Point r)
+    // Check if q is on [pr]
+    static boolean onSegment(Location p, Location q, Location r)
     {
-        if (q.x <= Math.max(p.x, r.x) &&
-                q.x >= Math.min(p.x, r.x) &&
-                q.y <= Math.max(p.y, r.y) &&
-                q.y >= Math.min(p.y, r.y))
+        if (q.lat <= Math.max(p.lat, r.lat) &&
+                q.lat >= Math.min(p.lat, r.lat) &&
+                q.lng <= Math.max(p.lng, r.lng) &&
+                q.lng >= Math.min(p.lng, r.lng))
         {
             return true;
         }
@@ -29,21 +29,21 @@ public class CheckSafeZone {
     }
 
     // Check the orientation of (p, q, r)
-    static int orientation(Point p, Point q, Point r)
+    static int orientation(Location p, Location q, Location r)
     {
-        int val = (q.y - p.y) * (r.x - q.x)
-                - (q.x - p.x) * (r.y - q.y);
+        int val = (q.lng - p.lng) * (r.lat - q.lat)
+                - (q.lat - p.lat) * (r.lng - q.lng);
 
         if (val == 0)
         {
             return 0; // collinear
         }
-        return (val > 0) ? 1 : 2; // clock or counterclock wise
+        return (val > 0) ? 1 : 2; // clock / counterclock wise
     }
 
     // Check if [p1q1] and [p2q2] intersect
-    static boolean doIntersect(Point p1, Point q1,
-                               Point p2, Point q2)
+    static boolean doIntersect(Location p1, Location q1,
+                               Location p2, Location q2)
     {
         // Find the four orientations
         int o1 = orientation(p1, q1, p2);
@@ -87,7 +87,7 @@ public class CheckSafeZone {
     }
 
     // Check if p is inside the polygon[]
-    static boolean isInside(Point polygon[], Point p)
+    static boolean isInside(Location polygon[], Location p)
     {
         int n = polygon.length;
         // There must be at least 3 vertices in polygon[]
@@ -96,8 +96,8 @@ public class CheckSafeZone {
             return false;
         }
 
-        // Create a point for line segment from p to infinite
-        Point extreme = new Point(INF, p.y);
+        // Create a point for segment from p to infinite
+        Location extreme = new Location(INF, p.lng);
 
         // Count intersections of the above line
         // with sides of polygon

@@ -3,6 +3,8 @@ package com.example.dakirni;
 import com.example.dakirni.AdapterContact.Contact;
 import com.example.dakirni.msgsAdapter.Message;
 
+import org.json.JSONObject;
+
 import java.lang.reflect.Array;
 import java.util.List;
 
@@ -28,4 +30,5 @@ public interface RetrofitInterface {
     Call<Void> deleteContact(@Body Contact deletedContact);
     @GET("/sons/allsons")
     Call<List<Contact>> getSons();
+    
 }
