@@ -2,6 +2,7 @@ package com.example.dakirni.AdapterReminder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +45,9 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
 
         String repeatingDays = reminders.get(position).getRepeatingDays();
         String title = reminders.get(position).getTitle();
-        String text = reminders.get(position).getText();
-        String image = reminders.get(position).getImage();
-        String voice = reminders.get(position).getVoice();
+      // String text = reminders.get(position).getText();
+//        String image = reminders.get(position).getImage();
+//        String voice = reminders.get(position).getVoice();
         int hour = reminders.get(position).getHour();
         int minute = reminders.get(position).getMinute();
         boolean is_checked = reminders.get(position).isIs_repeating();
@@ -88,9 +89,21 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     Reminder reminder = reminders.get(position);
-                    Toast.makeText(context, reminder.getTitle(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, SetReminderActivity.class);
-                    intent.putExtra("IS_NEW", false);
+                    intent.putExtra("Hour", reminder.getHour());
+                    intent.putExtra("Minute", reminder.getMinute());
+                    intent.putExtra("Title", reminder.getTitle());
+                    intent.putExtra("Text", reminder.getText());
+                    intent.putExtra("voice", reminder.getVoice());
+                    intent.putExtra("repeat", reminder.isIs_repeating());
+                    intent.putExtra("Image", reminder.getImage());
+                    intent.putExtra("Mon", reminder.isMon());
+                    intent.putExtra("Wed", reminder.isWed());
+                    intent.putExtra("Sun", reminder.isSun());
+                    intent.putExtra("Fri", reminder.isFri());
+                    intent.putExtra("Sat", reminder.isSat());
+                    intent.putExtra("Thu", reminder.isThu());
+                    intent.putExtra("Tue", reminder.isTue());
                     intent.putExtra("REMINDER_ID", reminder.getReminder_id());
                     context.startActivity(intent);
                 }
@@ -108,7 +121,7 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.Remind
         }
 
         // set the data to show in the view, data for each reminder
-        public void setData(String time, String title, String days, boolean is_repeating, boolean is_active) {
+        public void setData(String time,String title, String days, boolean is_repeating, boolean is_active) {
             reminderTime.setText(time);
             reminderTitle.setText(title);
             reminderRepeatingDays.setText(days);

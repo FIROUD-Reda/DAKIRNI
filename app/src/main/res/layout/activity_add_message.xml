@@ -157,7 +157,7 @@
                 android:layout_height="80dp"
                 android:layout_marginLeft="140dp"
                 android:layout_marginRight="30dp"
-                android:visibility="invisible"
+                android:visibility="visible"
                 app:srcCompat="@drawable/stop_recording" />
 
             <ImageView
@@ -198,7 +198,7 @@
 
         <TextView
             android:id="@+id/send"
-            android:layout_width="match_parent"
+            android:layout_width="273dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="62dp"
