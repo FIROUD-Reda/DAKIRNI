@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Parcelable;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -20,9 +21,12 @@ import com.example.dakirni.AddContactActivity;
 import com.example.dakirni.ParentsDashBoard;
 import com.example.dakirni.R;
 import com.example.dakirni.RetrofitInterface;
+import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -55,8 +59,6 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_design_for_contact, parent, false);
         return new ItemViewHolder(view);
-
-
     }
 
     @Override
@@ -68,16 +70,12 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
         String line = contactList.get(position).getDivider();
 
         holder.setData(resource, name, msg, line);
-
-
     }
 
     @Override
     public int getItemCount() {
         return contactList.size();
     }
-
-    //view holder class
 
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -88,12 +86,8 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
         //
         private ImageView update_contact;
         private ImageView delete_contact;
-
-
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            //here use xml ids
-            //give different name not like constructor
             imageView = itemView.findViewById(R.id.image_father);
             textView = itemView.findViewById(R.id.name_father);
             textView2 = itemView.findViewById(R.id.Key);
@@ -102,18 +96,6 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
             delete_contact = itemView.findViewById(R.id.delete_contact);
 
             divider = itemView.findViewById(R.id.Divider);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // Log.d("RecyclerView", "onClick：");
-//                    int position = getAdapterPosition();
-//                    Contact item = contactList.get(position);
-//                    ///to get the key
-//                    Toast.makeText(mContext, item.getTextview2(), Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(mContext, ParentsDashBoard.class);
-//                    mContext.startActivity(intent);
-//                }
-//            });
 
             // To update a contact
             update_contact.setOnClickListener(new View.OnClickListener() {
@@ -143,23 +125,64 @@ public class AdapterContact extends RecyclerView.Adapter<AdapterContact.ItemView
                     deleteContact(deletedContact);
                 }
             });
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callFunction();
+                }
+            });
+
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callFunction();
+                }
+            });
+
+            textView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    callFunction();
+                }
+            });
         }
 
+        public void callFunction() {
+            int pos = getAdapterPosition();
+            Contact contact = contactList.get(pos);
+            String number = contact.getTextview2();
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + number));
+            if (intent.resolveActivity(mContext.getPackageManager()) != null) {
+                mContext.startActivity(intent);
+            }
+        }
         public void setData(String resource, String name, String msg, String line) {
-
-
            imageView.setImageBitmap(decodeImage(resource));
             textView.setText(name);
             textView2.setText(msg);
             divider.setText(line);
-
         }
-
     }
 
     public void deleteContact(Contact deletedContact) {
 
-        Call<Void> call = retrofitInterface.deleteContact(deletedContact);
+        SonDbHelper sonDbHelper = new SonDbHelper(mContext);
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
+
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(mContext, maListe.toString(), Toast.LENGTH_SHORT).show();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(mContext, "Aucun Résultat trouvé !", Toast.LENGTH_SHORT).show();
+        }
+
+        Call<Void> call = retrofitInterface.deleteContact(maListe.toString(), deletedContact, environementVariablesOfDakirni.key);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
