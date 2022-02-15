@@ -220,7 +220,7 @@ public class GameActivity extends AppCompatActivity {
         }else if (cardNumber == 2){
             secondCard = cardsArray[card];
             if(secondCard > 200){
-                secondCard = secondCard -200;
+                secondCard = secondCard -100;
             }
             cardNumber = 1;
             clickedSecond =card;
@@ -384,7 +384,7 @@ public class GameActivity extends AppCompatActivity {
                 iv_34.getVisibility() == View.INVISIBLE){
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GameActivity.this);
-            alertDialogBuilder.setMessage("GAME OVER!\nPoints: "+ playerPoints)
+            alertDialogBuilder.setMessage("CONGRATULATIONS !!\nPoints: "+ playerPoints)
                     .setCancelable(false)
                     .setPositiveButton("NEW", new DialogInterface.OnClickListener() {
                         @Override

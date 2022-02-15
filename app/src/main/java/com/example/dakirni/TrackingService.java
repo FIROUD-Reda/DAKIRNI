@@ -58,29 +58,29 @@ public class TrackingService extends Service {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        trackNotification();
+//        trackNotification();
         locationUpdates();
     }
 
     //Create the notification
-    private void trackNotification() {
-        Log.d("notif", "start");
-        String stop = "stop";
-        registerReceiver(stopReceiver, new IntentFilter(stop));
-        PendingIntent broadcastIntent = PendingIntent.getBroadcast(
-                this, 0, new Intent(stop), PendingIntent.FLAG_UPDATE_CURRENT);
-
-        // Create notification
-        Notification.Builder builder = new Notification.Builder(this)
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText("Tracking is currently enabled.")
-                .setOngoing(true)
-                .setContentIntent(broadcastIntent)
-                .setSmallIcon(R.drawable.ic_baseline_location);
-        startForeground(1, builder.build());
-
-        Log.d("notif", "end");
-    }
+//    private void trackNotification() {
+//        Log.d("notif", "start");
+//        String stop = "stop";
+//        registerReceiver(stopReceiver, new IntentFilter(stop));
+//        PendingIntent broadcastIntent = PendingIntent.getBroadcast(
+//                this, 0, new Intent(stop), PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//        // Create notification
+//        Notification.Builder builder = new Notification.Builder(this)
+//                .setContentTitle(getString(R.string.app_name))
+//                .setContentText("Tracking is currently enabled.")
+//                .setOngoing(true)
+//                .setContentIntent(broadcastIntent)
+//                .setSmallIcon(R.drawable.ic_baseline_location);
+//        startForeground(1, builder.build());
+//
+//        Log.d("notif", "end");
+//    }
 
     private void safeZoneNotification(String notificationText) {
         Log.d("notif", "start");
