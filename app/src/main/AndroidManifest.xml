@@ -11,9 +11,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-
+    <uses-permission android:name="android.permission.STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 
     <application
@@ -26,6 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dakirni"
         android:usesCleartextTraffic="true">
+
+        <service
+            android:name=".TrackingService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".FatherChoiceActivity"
             android:exported="false" />
@@ -34,6 +41,9 @@
             android:exported="false" />
         <activity
             android:name=".LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".displayImage"
             android:exported="false" />
         <activity
             android:name=".UpdateFather"

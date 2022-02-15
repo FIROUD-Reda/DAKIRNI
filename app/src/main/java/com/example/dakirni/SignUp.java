@@ -66,8 +66,8 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-//                if(input_confirm_password.getText().toString()==input_password.getText().toString()){
-                  if(input_password.getText().toString()==input_confirm_password.getText().toString()){
+//                if(input_confirm_password.getText().toString() == input_password.getText().toString()){
+                  if(input_password.getText().toString().equals(input_confirm_password.getText().toString())){
                       SonRegister sonRegister = new SonRegister(input_username.getText().toString(),input_email.getText().toString(),input_password.getText().toString(),stringedImage);
                       Log.d("register","register1");
                       Call<SonResponse> call = retrofitInterface.registerSon(sonRegister);

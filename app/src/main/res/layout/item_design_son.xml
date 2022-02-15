@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="?android:attr/selectableItemBackground"
+
+        >
+
+        <androidx.cardview.widget.CardView
+
+            android:id="@+id/imageview111"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="60dp">
+
+            <ImageView
+                android:id="@+id/imageview11"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher_round"></ImageView>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textview11"
+            android:layout_width="267dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/imageview111"
+            android:text="usman lamkadam"
+            android:textColor="#000000"
+            android:textSize="25sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="67dp"
+            android:layout_height="8dp"
+            android:layout_below="@+id/textview11"
+            android:text=""
+            android:visibility="invisible">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Divider"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/imageview111"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-5dp"
+            android:layout_toRightOf="@id/imageview111"
+            android:text="hello"
+            android:textColor="#CDC7C7">
+        </TextView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

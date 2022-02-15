@@ -51,6 +51,7 @@
     <CheckBox
         android:id="@+id/checkBox_repeat"
         style="@style/CustomCheck"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -59,6 +60,7 @@
         android:text="@string/repeat_reminder"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout_repeat_options"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/relativeLayout_set_reminder" />
 
@@ -162,73 +164,87 @@
 
     </RelativeLayout>
 
+
     <RelativeLayout
         android:id="@+id/relativeLayout_reminder_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/blue_border_rounded_cornwe"
+        android:layout_marginTop="22dp"
+        android:orientation="horizontal"
+        android:padding="10px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout_reminder_text">
 
-        <TextView
-            android:id="@+id/tv_reminder_image"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btn_add_reminder_image"
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/poppins_regular"
-            android:maxLines="1"
-            android:paddingLeft="17dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="@string/no_image"
-            android:textCursorDrawable="@drawable/cursor_color" />
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <ImageView
+                android:id="@+id/btnRecord"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
 
-        <Button
-            android:id="@+id/btn_add_reminder_image"
-            tools:layout_editor_absoluteX="133dp"
-            android:layout_width="80dp"
-            android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/blue_fill__rounded_color"
-            android:backgroundTint="@color/blue"
-            android:fontFamily="@font/poppins_medium"
-            android:maxHeight="50dp"
-            android:text="@string/add_image"
-            android:textColor="#ffffff"
-            android:textSize="9sp" />
+                app:srcCompat="@drawable/start_recording"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageView
+                android:id="@+id/btnStop"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:visibility="visible"
+                android:background="@color/zxing_transparent"
+                app:srcCompat="@drawable/stop_recording" />
+
+            <ImageView
+                android:id="@+id/btnStopPlay"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/delete_record" />
+
+
+            <ImageView
+                android:id="@+id/btnPlay"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/play_recording" />
+
+
+
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout_reminder_voice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/blue_border_rounded_cornwe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout_reminder_image">
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout_reminder_image"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_reminder_voice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btn_add_reminder_voice"
+            android:id="@+id/tv_reminder_image"
+            android:layout_width="232dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@+id/upload_image_reminder"
             android:background="@android:color/transparent"
             android:fontFamily="@font/poppins_regular"
             android:maxLines="1"
-            android:paddingLeft="17dp"
-            android:paddingTop="15dp"
+            android:paddingLeft="30dp"
+            android:paddingTop="30dp"
             android:paddingBottom="15dp"
             android:text="@string/no_voice"
             android:textCursorDrawable="@drawable/cursor_color" />
 
         <Button
-            android:id="@+id/btn_add_reminder_voice"
+            android:id="@+id/upload_image_reminder"
             android:layout_width="80dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
@@ -237,11 +253,40 @@
             android:backgroundTint="@color/blue"
             android:fontFamily="@font/poppins_medium"
             android:maxHeight="48dp"
-            android:text="@string/add_voice"
+            android:text="@string/add_image"
             android:textColor="#ffffff"
             android:textSize="9sp"
+            app:srcCompat="@drawable/play_recording"
             tools:layout_editor_absoluteX="133dp" />
+
     </RelativeLayout>
+    <EditText
+        android:id="@+id/aloRe"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/deleteR"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="#934040"
+        android:fontFamily="@font/poppins_medium"
+        android:maxHeight="48dp"
+        android:text="delete reminder"
+        android:textColor="#ffffff"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout_reminder_image"
+        app:layout_constraintVertical_bias="0.942"
+        app:srcCompat="@drawable/delete_record" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dakirni.AdapterContact.Contact;
+import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.ui.contacts.ContactsFragment;
 import com.example.dakirni.ui.message.MessageFragment;
@@ -29,6 +30,8 @@ import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -141,13 +144,11 @@ public class AddContactActivity extends AppCompatActivity {
             String str = fullPhotoUri.getPath().toString();
             tv_add_contact_image = findViewById(R.id.tv_add_contact_image);
             tv_add_contact_image.setText(str);
-//            imageView_add_contact = (ImageView) findViewById(R.id.imageView_add_contact);
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), fullPhotoUri);
                 imageView_add_contact.setImageBitmap(bitmap);
                 stringImage = encodeImage(bitmap);
                 editText_contact_encoded_image.setText(stringImage);
-//                Toast.makeText(getApplicationContext(), stringImage, Toast.LENGTH_LONG).show();
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_LONG).show();
@@ -156,7 +157,6 @@ public class AddContactActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No Image have been selected", Toast.LENGTH_LONG).show();
         }
     }
-
     private void addNewContact() {
         String name = input_contact_name.getText().toString();
         String number = input_contact_number.getText().toString();
@@ -164,9 +164,20 @@ public class AddContactActivity extends AppCompatActivity {
         newContact.setTextview1(name);
         newContact.setTextview2(number);
         newContact.setImageview(image);
-
-
-        Call<Void> call = retrofitInterface.addContact(newContact);
+        newContact.setFatherKey(environementVariablesOfDakirni.key);
+        SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(getApplicationContext(), maListe.toString(), Toast.LENGTH_SHORT).show();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(getApplicationContext(), "Aucun Résultat trouvé !", Toast.LENGTH_SHORT).show();
+        }
+        Call<Void> call = retrofitInterface.addContact(maListe.toString(), newContact);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -195,7 +206,21 @@ public class AddContactActivity extends AppCompatActivity {
         updatedContact.setTextview2(number);
         updatedContact.setImageview(image);
 
-        Call<Void> call = retrofitInterface.updateContact(updatedContact);
+        SonDbHelper sonDbHelper = new SonDbHelper(getApplicationContext());
+        ArrayList<String> arrayList = sonDbHelper.lireToken();
+        StringBuffer maListe = new StringBuffer();
+
+        try {
+            Iterator<String> iter = arrayList.iterator();
+            while (iter.hasNext()) {
+                maListe.append(iter.next());
+            }
+            Toast.makeText(getApplicationContext(), maListe.toString(), Toast.LENGTH_SHORT).show();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(getApplicationContext(), "Aucun Résultat trouvé !", Toast.LENGTH_SHORT).show();
+        }
+
+        Call<Void> call = retrofitInterface.updateContact(maListe.toString(), updatedContact, environementVariablesOfDakirni.key);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
