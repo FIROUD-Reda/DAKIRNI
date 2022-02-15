@@ -86,8 +86,6 @@ public class MessageFragment extends Fragment {
         adapter = new MessagesAdapter(msgsList, getContext());
         mrecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
-
     }
 
     private void initDataforson(View root) {

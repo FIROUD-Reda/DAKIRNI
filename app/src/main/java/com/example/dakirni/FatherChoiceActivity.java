@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.dakirni.backgroundServices.FetchMessages;
 
 public class FatherChoiceActivity extends AppCompatActivity {
-Button list_sons, game;
+ImageView list_sons, game;
     @Override
     public void onBackPressed() {
 
@@ -20,8 +21,8 @@ Button list_sons, game;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_father_choice);
-        list_sons = findViewById(R.id.list_sons_btn);
-        game = findViewById(R.id.game_btn);
+        list_sons = findViewById(R.id.contacts_image);
+        game = findViewById(R.id.game_image);
         list_sons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

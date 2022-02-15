@@ -49,15 +49,15 @@
             android:background="?android:attr/listDivider"
             android:backgroundTint="#050505"
             android:visibility="visible" />
-<View
-    android:layout_width="30dp"
-    android:layout_height="100dp"
-    android:layout_alignParentRight="true"
-    android:background="@color/black"
-    android:id="@+id/msg_status_view"
-    >
 
-</View>
+        <View
+            android:id="@+id/msg_status_view"
+            android:layout_width="30dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/black">
+
+        </View>
 
     </RelativeLayout>
 

@@ -6,27 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".FatherChoiceActivity">
 
-    <Button
-        android:id="@+id/list_sons_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="List sons"
+    <ImageView
+        android:id="@+id/contacts_image"
+        android:layout_width="255dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.351" />
+        app:layout_constraintVertical_bias="0.235"
+        app:srcCompat="@drawable/family_icon" />
 
-    <Button
-        android:id="@+id/game_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="game"
+    <ImageView
+        android:id="@+id/game_image"
+        android:layout_width="218dp"
+        android:layout_height="158dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.623"
+        app:srcCompat="@drawable/game_icon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

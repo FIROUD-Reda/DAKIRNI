@@ -26,6 +26,7 @@ import com.example.dakirni.database.son.SonDbHelper;
 import com.example.dakirni.environements.environementVariablesOfDakirni;
 import com.example.dakirni.fatherObjects.FatherCrudResponse;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -203,7 +204,10 @@ public class AdapterSon extends RecyclerView.Adapter<AdapterSon.ItemViewHolder> 
                 ///to get the key
                    Toast.makeText(mContext,item.getTextview2(),Toast.LENGTH_SHORT).show();
 
+
                     environementVariablesOfDakirni.key=item.getTextview2().split(":",2)[1];
+                    environementVariablesOfDakirni.name=item.getTextview1();
+                    environementVariablesOfDakirni.image=item.getImageview();
                     Intent intent=new Intent(mContext, ParentsDashBoard.class);
                     intent.putExtra("key",item.getTextview2());
                     mContext.startActivity(intent);
@@ -229,7 +233,19 @@ public class AdapterSon extends RecyclerView.Adapter<AdapterSon.ItemViewHolder> 
             divider.setText(line);
 
         }
+        private String encodeImage(Bitmap bitmap) {
 
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            // compress Bitmap
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 1, stream);
+            // Initialize byte array
+            byte[] bytes = stream.toByteArray();
+            // get base64 encoded string
+            String a = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+            return a;
+            // set encoded text on textview
+        }
         public String getToken(Context context){
             SonDbHelper sonDbHelper = new SonDbHelper(mContext);
 

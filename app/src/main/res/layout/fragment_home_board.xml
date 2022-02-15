@@ -86,8 +86,7 @@
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="12sp">
-                </TextView>
+                    android:textSize="12sp"></TextView>
 
             </RelativeLayout>
         </LinearLayout>
@@ -109,7 +108,7 @@
                     android:layout_height="50dp"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="@string/age"
+                    android:text="@string/key"
                     android:textColor="@color/blue_520"
                     android:textCursorDrawable="@drawable/cursor_color"
                     android:textSize="17sp"
@@ -142,53 +141,7 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <!-- INPUT -->
-                <TextView
-                    android:id="@+id/username_input5"
-                    android:layout_width="80dp"
-                    android:layout_height="50dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center"
-                    android:text="@string/relation"
-                    android:textColor="@color/blue_520"
-                    android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlSymmetry" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/blue_border_rounded_cornwe">
-
-                <!-- INPUT -->
-                <TextView
-                    android:id="@+id/email_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:paddingLeft="17dp"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="12sp">
-                </TextView>
-
-            </RelativeLayout>
-        </LinearLayout>
 
 
     </LinearLayout>
