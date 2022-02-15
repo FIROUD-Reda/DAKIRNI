@@ -34,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_design,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_design_son,parent,false);
         return new ViewHolder(view);
 
 
@@ -56,8 +56,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-//        return userList.size();
-        return 1;
+        return userList.size();
+//        return 1;
     }
 
     //view holder class
@@ -73,10 +73,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            //here use xml ids
-            //give different name not like constructor
-            imageView=itemView.findViewById(R.id.imageview);
-            textView=itemView.findViewById(R.id.textview);
+
+            imageView=itemView.findViewById(R.id.imageview11);
+            textView=itemView.findViewById(R.id.textview11);
             textView2=itemView.findViewById(R.id.textview2);
             divider=itemView.findViewById(R.id.Divider);
             itemView.setOnClickListener(new View.OnClickListener() {

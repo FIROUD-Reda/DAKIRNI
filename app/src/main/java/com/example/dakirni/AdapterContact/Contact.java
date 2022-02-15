@@ -12,6 +12,8 @@ public class Contact {
     private String textview1;
     @SerializedName("contact_number")
     private String textview2;
+    @SerializedName("fatherKey")
+    private String fatherKey;
 
     private String divider;
 
@@ -19,11 +21,20 @@ public class Contact {
         this.contactId = Math.random() * 10000000;
     }
 
-    public Contact(String imageview, String textview1, String textview2) {
+    public String getFatherKey() {
+        return fatherKey;
+    }
+
+    public void setFatherKey(String fatherKey) {
+        this.fatherKey = fatherKey;
+    }
+
+    public Contact(String imageview, String textview1, String textview2, String fatherKey) {
         this.contactId = Math.random() * 10000000;
         this.imageview = imageview;
         this.textview1 = textview1;
         this.textview2 = textview2;
+        this.fatherKey = fatherKey;
     }
 
     public double getContactId() {

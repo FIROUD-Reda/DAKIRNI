@@ -146,7 +146,7 @@ public class TrackingService extends Service {
                     DatabaseReference ref = database.getReference("location");
                     if (location != null) {
 //                        ref.setValue(location);
-                        ref.child("user_id").child("father_id").setValue(location);
+                        ref.child("user_id").child(environementVariablesOfDakirni.key).setValue(location);
 //                        ref.child("user2_id").child("father2_id").setValue(location);
                     } else {
                         Log.e("Location", "No location found");

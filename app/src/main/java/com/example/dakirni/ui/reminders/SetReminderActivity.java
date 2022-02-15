@@ -495,12 +495,15 @@ public class SetReminderActivity extends AppCompatActivity {
             mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
             mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             mRecorder.setOutputFile(mFileName);
+            if(mFileName!=null)
+                System.out.println("had file rah machi null"+mFileName);
             try {
                 mRecorder.prepare();
+                mRecorder.start();
             } catch (IOException e) {
-                Log.e("TAG", "prepare() failed");
+                System.out.println("makhdamch prepare");
             }
-            mRecorder.start();
+
         } else {
             RequestPermissions();
         }

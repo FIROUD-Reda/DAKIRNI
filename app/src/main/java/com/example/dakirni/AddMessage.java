@@ -246,10 +246,10 @@ public class AddMessage extends AppCompatActivity {
             while (iter.hasNext()) {
                 maListe.append(iter.next());
             }
-            Toast.makeText(getApplicationContext(),maListe.toString(),Toast.LENGTH_SHORT).show();
-        }catch (ArrayIndexOutOfBoundsException e){
-            Toast.makeText(getApplicationContext(),"Aucun Résultat trouvé !",Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getApplicationContext(), maListe.toString(), Toast.LENGTH_SHORT).show();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            Toast.makeText(getApplicationContext(), "Aucun Résultat trouvé !", Toast.LENGTH_SHORT).show();
+        }
 
         Call<Void> call = retrofitInterface.addMessage(maListe.toString(),msgToBeSent);
         System.out.println("hello");

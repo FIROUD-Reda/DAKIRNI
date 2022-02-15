@@ -29,14 +29,14 @@ public interface RetrofitInterface {
 
 
     @POST("/contacts/addcontact")
-    Call<Void> addContact(@Body Contact newContact);
-    @GET("/contacts/allcontacts")
-    Call<List<Contact>> getContacts();
-    @POST("/contacts/updatecontact")
-    Call<Void> updateContact(@Body Contact updatedContact);
-    @POST("/contacts/deletecontact")
-    Call<Void> deleteContact(@Body Contact deletedContact);
-    @GET("/sons/allsons")
-    Call<List<Contact>> getSons();
+    Call<Void> addContact(@Header ("Auth-Token") String header, @Body Contact newContact);
+    @GET("/contacts/allcontacts/{fatherKey}")
+    Call<List<Contact>> getContacts(@Header ("Auth-Token") String header, @Path("fatherKey") String fatherKey);
+    @POST("/contacts/updatecontact/{fatherKey}")
+    Call<Void> updateContact(@Header ("Auth-Token") String header, @Body Contact updatedContact, @Path("fatherKey") String fatherKey);
+    @POST("/contacts/deletecontact/{fatherKey}")
+    Call<Void> deleteContact(@Header ("Auth-Token") String header, @Body Contact deletedContact, @Path("fatherKey") String fatherKey);
+    @GET("/sons/allsons/{fatherKey}")
+    Call<List<Contact>> getSons( @Path("fatherKey") String fatherKey);
     
 }
